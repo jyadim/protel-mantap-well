@@ -161,23 +161,23 @@
                         </li>
                         <li class="mb-1">
                             <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-lime-600 rounded"
-                                href="/serv">Services</a>
+                                href="/services">Services</a>
                         </li>
                         <li class="mb-1">
                             <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-lime-600 rounded"
-                                href="/">Products</a>
+                                href="/product">Products</a>
                         </li>
                         <li class="mb-1">
                           <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-lime-600 rounded"
-                              href="/">Gallery</a>
+                              href="/gallery">Gallery</a>
                       </li>
                         <li class="mb-1">
                           <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-lime-600 rounded"
-                              href="/">About Us</a>
+                              href="/about">About Us</a>
                       </li>
                         <li class="mb-1">
                             <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-lime-600 rounded"
-                                href="/p">Contact Us</a>
+                                href="/contact">Contact Us</a>
                         </li>
                     </ul>
                 </div>
@@ -252,7 +252,7 @@
                                         </label>
                                     </div>
                                     <button type="button"
-                                        class="mb-6 w-full rounded bg-sky-500 text-white px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal   lg:mb-0">
+                                        class="mb-6 w-full rounded bg-lime-500 text-white px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal   lg:mb-0">
                                         Contact Us
                                     </button>
                                 </form>
@@ -263,7 +263,7 @@
                                         class="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:w-full lg:px-6 xl:w-6/12">
                                         <div class="flex items-start">
                                             <div class="shrink-0">
-                                                <div class="inline-block rounded-md bg-sky-200 p-4 text-primary">
+                                                <div class="inline-block rounded-md bg-lime-400 p-4 text-primary">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                                         class="h-6 w-6">
@@ -289,7 +289,7 @@
                                         class="mb-12 w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:w-full lg:px-6 xl:w-6/12">
                                         <div class="flex items-start">
                                             <div class="srink-0">
-                                                <div class="inline-block rounded-md bg-sky-200 p-4 text-primary">
+                                                <div class="inline-block rounded-md bg-lime-400 p-4 text-primary">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                                         class="w-7 h-7">
@@ -313,7 +313,7 @@
                                         class="mb-12 w-full shrink-0 grow-0 basis-auto md:mb-0 md:w-6/12 md:px-3 lg:mb-12 lg:w-full lg:px-6 xl:w-6/12">
                                         <div class="align-start flex">
                                             <div class="shrink-0">
-                                                <div class="inline-block rounded-md bg-sky-200 p-4 text-primary">
+                                                <div class="inline-block rounded-md bg-lime-400 p-4 text-primary">
                                                     <svg version="1.1" id="Layer_1"
                                                         xmlns="http://www.w3.org/2000/svg"
                                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -339,7 +339,7 @@
                                         class="w-full shrink-0 grow-0 basis-auto md:w-6/12 md:px-3 lg:w-full lg:px-6 xl:mb-12 xl:w-6/12">
                                         <div class="align-start flex">
                                             <div class="shrink-0">
-                                                <div class="inline-block rounded-md bg-sky-200 p-4 text-primary">
+                                                <div class="inline-block rounded-md bg-lime-400 p-4 text-primary">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                         class="w-6 h-6">

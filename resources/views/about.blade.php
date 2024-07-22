@@ -150,23 +150,23 @@
                         </li>
                         <li class="mb-1">
                             <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-lime-600 rounded"
-                                href="/serv">Services</a>
+                                href="/services">Services</a>
                         </li>
                         <li class="mb-1">
                             <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-lime-600 rounded"
-                                href="/">Products</a>
+                                href="/product">Products</a>
                         </li>
                         <li class="mb-1">
-                            <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-lime-600 rounded"
-                                href="/">Gallery</a>
-                        </li>
+                          <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-lime-600 rounded"
+                              href="/gallery">Gallery</a>
+                      </li>
+                        <li class="mb-1">
+                          <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-lime-600 rounded"
+                              href="/about">About Us</a>
+                      </li>
                         <li class="mb-1">
                             <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-lime-600 rounded"
-                                href="/">About Us</a>
-                        </li>
-                        <li class="mb-1">
-                            <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-lime-600 rounded"
-                                href="/p">Contact Us</a>
+                                href="/contact">Contact Us</a>
                         </li>
                     </ul>
                 </div>
