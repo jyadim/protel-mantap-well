@@ -4,3 +4,6 @@
 
 @import "tailwindcss/utilities";
 
+.d150{
+    background-image: url(gambar.jpg);
+}
