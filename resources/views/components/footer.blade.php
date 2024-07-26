@@ -1,4 +1,3 @@
-
 <div class="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
     <hr><br>
     <div class="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -10,22 +9,34 @@
                 <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">PME Bandung</span>
             </a>
             <div class="mt-6 lg:max-w-sm">
-                <p class="text-base font-bold tracking-wide text-gray-900">Contacts</p>
+                <p class="text-xl font-bold tracking-wide text-lime-600">Contacts</p>
                 <div class="flex">
-                    <p class="mr-1 text-gray-800">Phone:</p>
-                    <a href="tel:850-123-5021" aria-label="Our phone" title="Our phone"
-                        class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">0813-9555-6300</a>
+                    <p class="mr-1 text-gray-800 text-lg font-bold">Phone:</p>
+                </div>
+                <div>
+                    <a href="tel:813-9555-6300" aria-label="Our phone" title="Our phone"
+                        class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">GSM
+                        : +62 813-9555-6300</a>
                 </div>
                 <div class="flex">
-                    <p class="mr-1 text-gray-800">Email:</p>
-                    <a href="mailto:info@lorem.mail" aria-label="Our email" title="Our email"
+                    <a href="tel:(022)-663108" aria-label="Our phone" title="Our Fax"
+                        class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">
+                        Tel/FAX : (022)-663108</a>
+                </div>
+                <div class="flex">
+                    <p class="mr-1 text-gray-800 text-lg font-bold">Email:</p>
+                </div>
+                <div>
+                    <a href="mailto:admin@pme-bandung.com" aria-label="Our email" title="Our email"
                         class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">admin@pme-bandung.com</a>
                 </div>
                 <div class="flex">
-                    <p class="mr-1 text-gray-800">Address:
+                    <p class="mr-1 text-gray-800 text-lg font-bold">Address:
                     </p>
-                    <a href="https://maps.app.goo.gl/U58e685HfQDoHEpr5" target="_blank"
-                        rel="noopener noreferrer" aria-label="Our address" title="Our address"
+                </div>
+                <div>
+                    <a href="https://maps.app.goo.gl/U58e685HfQDoHEpr5" target="_blank" rel="noopener noreferrer"
+                        aria-label="Our address" title="Our address"
                         class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">
                         Gg.Awibitung No. 40 Ciawitali Selatan
                         Cimahi 40152 Jawa Barat, Indonesia

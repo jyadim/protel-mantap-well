@@ -20,6 +20,18 @@ Route::get('/gallery', function () {
 Route::get('/product', function () {
     return view('product');
 });
-Route::get('/detailproduct', function () {
-    return view('detailproduct');
+Route::get('/crossflow', function () {
+    return view('crossflow');
+});
+Route::get('/international-project', function () {
+    return view('international');
+});
+Route::get('/indonesia-project', function () {
+    return view('indonesia');
+});
+Route::get('/partners', function () {
+    return view('partner');
+});
+Route::get('/p', function () {
+    return view('welcome');
 });
