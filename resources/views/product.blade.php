@@ -14,74 +14,27 @@
     <div class="min-h-full">
         <x-navbar></x-navbar>
 
-        <div class="bg-white py-16">
-            <div class="container mx-auto px-4">
-                <center>
-                    <h2 class="text-3xl font-bold text-black mb-8">Introducing Our Product</h2>
-                </center>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white rounded-lg shadow-lg p-8">
-                        <div class="relative overflow-hidden">
-                            <img class="object-cover w-full h-72 rounded-md" src="img/microhydro.jpg" alt="Product">                           
-                        </div>
-                        <h3 class="text-xl text-gray-900 mt-4">Crossflow Turbine</h3>
-                        <div class="flex items-center justify-between mt-4">
-                            <button
-                                class="bg-lime-600 text-white py-2 px-4 rounded-xl font-bold hover:bg-lime-700">Detail
-                                Product</button>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg p-8">
-                        <div class="relative overflow-hidden">
-                            <img class="object-cover w-full h-72 rounded-md"
-                                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Product">
-                        </div>
-                        <h3 class="text-xl text-gray-900 mt-4">Pelton Turbine</h3>
-                        <div class="flex items-center justify-between mt-4">
-                            <button
-                                class="bg-lime-600 text-white py-2 px-4 rounded-xl font-bold hover:bg-lime-700">Detail
-                                Product</button>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg p-8">
-                        <div class="relative overflow-hidden">
-                            <img class="object-cover w-full h-72 rounded-md"
-                                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Product">
-                        </div>
-                        <h3 class="text-xl text-gray-900 mt-4">Electronic Load Controller</h3>
-                        <div class="flex items-center justify-between mt-4">
-                            <button
-                                class="bg-lime-600 text-white py-2 px-4 rounded-xl font-bold hover:bg-lime-700">Detail
-                                Product</button>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg p-8">
-                        <div class="relative overflow-hidden">
-                            <img class="object-cover w-full h-72 rounded-md" src="img/microhydro.jpg" alt="Product">
-                        </div>
-                        <h3 class="text-xl text-gray-900 mt-4">Mechanical & Electrical</h3>
-                        <div class="flex items-center justify-between mt-4">
-                            <button
-                                class="bg-lime-600 text-white py-2 px-4 rounded-xl font-bold hover:bg-lime-700">Detail
-                                Product</button>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-lg p-8">
-                        <div class="relative overflow-hidden">
-                            <img class="object-cover w-full h-72 rounded-md"
-                                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Product">
-                        </div>
-                        <h3 class="text-xl text-gray-900 mt-4">Micro Hydro Trainer Simulator</h3>
-                        <div class="flex items-center justify-between mt-4">
-                            <button
-                                class="bg-lime-600 text-white py-2 px-4 rounded-xl font-bold hover:bg-lime-700">Detail
-                                Product</button>
-                        </div>
-                    </div>
-                </div>
+        <section class="container mx-auto p-10 md:py-12 px-0 md:p-8 md:px-0 mt-16">
+            <div class="w-full mb-6 lg:mb-0">
+                <h1 class="sm:text-4xl text-5xl font-medium  title-font mb-2 text-gray-900">
+                    Product Gallery</h1>
+                <div class="h-1 w-64 bg-lime-500 rounded"></div>
             </div>
+            <section
+                class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 items-start mt-10 ">
+                @foreach ($product as $product)
+                    <section
+                        class="p-5 py-10 bg-blue-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer">
+                        <img src="{{ $product['image'] }}" alt="">
 
-        </div>
+                        <h1 class="text-3xl my-5">{{ $product['name'] }}</h1>
+                        <p class="mb-5">{{ $product['detailprod'] }}
+                        </p>
+                        <a class="p-2 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600" href="/product/{{ $product['slug'] }}">Detail</a>
+                    </section>
+                @endforeach
+            </section>
+        </section>
 
         <x-footer></x-footer>
 </body>

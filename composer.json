@@ -10,7 +10,6 @@
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "larswiegers/laravel-maps": "^0.18.0",
-        "livewire/livewire": "*",
         "yidas/google-maps-services": "^1.2"
     },
     "require-dev": {

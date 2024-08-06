@@ -9,55 +9,53 @@
                 <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">PME Bandung</span>
             </a>
             <div class="mt-6 lg:max-w-sm">
-                <p class="text-xl font-bold tracking-wide text-lime-600">Contacts</p>
-                <div class="flex">
-                    <p class="mr-1 text-gray-800 text-lg font-bold">Phone:</p>
-                </div>
-                <div>
-                    <a href="tel:813-9555-6300" aria-label="Our phone" title="Our phone"
-                        class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">GSM
-                        : +62 813-9555-6300</a>
-                </div>
-                <div class="flex">
-                    <a href="tel:(022)-663108" aria-label="Our phone" title="Our Fax"
-                        class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">
-                        Tel/FAX : (022)-663108</a>
-                </div>
-                <div class="flex">
-                    <p class="mr-1 text-gray-800 text-lg font-bold">Email:</p>
-                </div>
-                <div>
-                    <a href="mailto:admin@pme-bandung.com" aria-label="Our email" title="Our email"
-                        class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">admin@pme-bandung.com</a>
-                </div>
-                <div class="flex">
-                    <p class="mr-1 text-gray-800 text-lg font-bold">Address:
-                    </p>
-                </div>
-                <div>
-                    <a href="https://maps.app.goo.gl/U58e685HfQDoHEpr5" target="_blank" rel="noopener noreferrer"
-                        aria-label="Our address" title="Our address"
-                        class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">
-                        Gg.Awibitung No. 40 Ciawitali Selatan
-                        Cimahi 40152 Jawa Barat, Indonesia
-                    </a>
-                </div>
+                <p class="text-sm text-gray-800">
+                    CV. PROTEL MULTI ENERGY (PME) manufactures and supplies complete micro hydro power equipment.
+                </p>
+                <p class="mt-4 text-sm text-gray-800">
+                    Specializing in Crossflow and Pelton turbines with capacities up to 500 kW per unit. </p>
             </div>
         </div>
         <div class="space-y-2 text-sm">
+            <p class="text-base font-bold tracking-wide text-gray-900">Contacts</p>
+            <div class="flex">
+                <p class="mr-1 text-gray-800">GSM:</p>
+                <a href="tel:813-9555-6300" aria-label="Our phone" title="Our phone"
+                    class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">+62
+                    813-9555-6300</a>
+            </div>
+            <div class="flex">
+                <p class="mr-1 text-gray-800">Tel/FAX:</p>
+                <a href="tel:(022)-663108" aria-label="Our phone" title="Our phone"
+                    class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">(022)-663108</a>
+            </div>
+            <div class="flex">
+                <p class="mr-1 text-gray-800">Email:</p>
+                <a href="mailto:admin@pme-bandung.com" aria-label="Our email" title="Our email"
+                    class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">admin@pme-bandung.com</a>
+            </div>
+            <div class="flex">
+                <p class="mr-1 text-gray-800">Address:</p>
+                <a href="https://maps.app.goo.gl/U58e685HfQDoHEpr5" target="_blank" rel="noopener noreferrer"
+                    aria-label="Our address" title="Our address"
+                    class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">
+                    Gg.Awibitung No. 40 Ciawitali Selatan
+                    Cimahi 40152 Jawa Barat, Indonesia
+                </a>
+            </div>
+        </div>
+        <div>
             <span class="text-base font-bold tracking-wide text-gray-900">Social</span>
             <div class="flex items-center mt-1 space-x-3">
                 <a href="/"
                     class="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400">
-                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
-                        <path
-                            d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z">
-                        </path>
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="h-7">
+                            <path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"></path>
                     </svg>
                 </a>
                 <a href="/"
                     class="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400">
-                    <svg viewBox="0 0 30 30" fill="currentColor" class="h-6">
+                    <svg viewBox="0 0 30 30" fill="currentColor" class="h-7">
                         <circle cx="15" cy="15" r="4"></circle>
                         <path
                             d="M19.999,3h-10C6.14,3,3,6.141,3,10.001v10C3,23.86,6.141,27,10.001,27h10C23.86,27,27,23.859,27,19.999v-10   C27,6.14,23.859,3,19.999,3z M15,21c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S18.309,21,15,21z M22,9c-0.552,0-1-0.448-1-1   c0-0.552,0.448-1,1-1s1,0.448,1,1C23,8.552,22.552,9,22,9z">
@@ -73,16 +71,11 @@
                     </svg>
                 </a>
             </div>
-
         </div>
-    </div>
-    <div>
     </div>
     <div class="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
         <p class="text-sm text-gray-600">
-            © Copyright 2024 SukaSusuSapi. All rights reserved.
+            © Copyright 2024 PME Bandung. All rights reserved.
         </p>
-
     </div>
-</div>
 </div>

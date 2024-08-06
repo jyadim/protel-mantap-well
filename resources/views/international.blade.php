@@ -15,7 +15,7 @@
     <div class="min-h-full">
 <x-navbar></x-navbar>
 
-        <section class="bg-center bg-no-repeat bg-none bg-white-700 bg-blend-multiply">
+        <section class="bg-center bg-no-repeat bg-none bg-white-700 bg-blend-multiply mt-24">
             <div class="px-4 mx-auto max-w-screen-xl text-center py-8 lg:py-8"> <!-- Disesuaikan padding di sini -->
                 <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-black md:text-5xl lg:text-6xl"
                     style="font-size: 3rem; color: black;">

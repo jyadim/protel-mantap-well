@@ -1,4 +1,4 @@
-<div class="sm:flex items-center max-w-screen-2xl mt-24">
+<div class="sm:flex items-center max-w-screen-2xl mt-32 mb-10">
     <div class="flex justify-center sm:w-4/5 px-16">
         <div class="flex image object-center justify-center text-center">
             <img class="rounded-2xl"
