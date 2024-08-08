@@ -101,7 +101,7 @@ Route::get('/', function () {
         'banner' => [
             [
                 'title' => 'CV. Protel Multi Energy',
-                'image' => 'https://www.pme-bandung.com/assets/upload/images/web%202023_2.jpg',
+                'image' => 'img/source/ref/inter/3.png',
                 'subtitle' => 'Specialized in
                         Manufacturing of Electronic Load Controller, Cross flow and Pelton turbines'
             ]
@@ -113,7 +113,7 @@ Route::get('/about', function () {
         'about' => [
             [
                 'id' => '1',
-                'image' => 'https://www.pme-bandung.com/assets/upload/images/web%202023.jpg',
+                'image' => 'img/source/about/3.png',
                 'detail1' => ' CV. PROTEL MULTI ENERGY (PME) manufactures and supplies complete micro hydro power
                             equipment, specializing in Crossflow and Pelton turbines with capacities up to 500 kW per
                             unit. Our solutions, which include survey and design, site construction, equipment supply,
@@ -226,7 +226,6 @@ Route::get('/gallery', function () {
                  in operation in more than 75 MHP sites worldwide. our equipments are exported 
                  to more than 30 countries worldwide such as Southeast Asia, South Asia, Africa, 
                  Europe, South America and Pacific and Australia.',
-                'image' => 'https://www.pme-bandung.com/assets/upload/images/T15%202023.jpg'
             ],
             [
                 'id' => '2',
@@ -243,12 +242,11 @@ Route::get('/gallery', function () {
                 Phillippines, Pakistan, Turkey, Switzerland, France 
                 and Australia. Folowing are some of our projects
                 references',
-                'image' => 'https://www.pme-bandung.com/assets/upload/images/SAMPUL%20UTAMA%204.jpg'
             ],
             [
                 'id' => '3',
                 'slug' => 'partners',
-                'image' => 'https://www.pme-bandung.com/assets/upload/images/web%202023_2.jpg',
+                'image' => 'img/source/ref/inter/2.png',
                 'title' => '',
                 'description' => '',
                 'partners' => [
@@ -730,15 +728,4 @@ Route::get('/gallery/{slug}', function ($slug) {
     return view('detail_gallery', ['detail_gallery' => $detgallery]);
 });
 
-Route::get('/indonesia-project', function () {
-    return view('indonesia');
-});
-Route::get('/partners', function () {
-    return view('partner');
-});
-Route::get('/i', function () {
-    return view('international');
-});
-Route::get('/p', function () {
-    return view('welcome');
-});
+

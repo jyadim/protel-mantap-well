@@ -18,7 +18,7 @@
         <main>
             @foreach ($banner as $head)
             <!-- Banner Section -->
-            <section class="bg-[center_30%] bg-no-repeat bg-[url('{{ $head['image'] }}')] bg-gray-700 bg-blend-multiply h-svh mt-16">
+            <section class="bg-[center_30%] bg-no-repeat bg-[url('{{ asset($head['image']) }}')] bg-gray-700 bg-blend-multiply h-svh mt-16">
                 <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
                     <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
                         {{$head['title']}}</h1>
@@ -51,7 +51,7 @@
             <section class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center gap-y-10 gap-x-10 mt-10">
                 @foreach ($prodhome as $prod)
                   <div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl items-center">
-                    <a href="#">
+                    <a href="/product/{{ $prod['slug'] }}">
                       <img src="{{ $prod['image'] }}" alt="Product" class="h-80 w-72 object-cover rounded-t-xl" />
                       <div class="px-4 py-3 w-72">
                         <span class="text-gray-400 mr-3 uppercase text-xs">{{ $prod['title'] }}</span>

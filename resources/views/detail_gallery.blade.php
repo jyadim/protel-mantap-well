@@ -21,14 +21,13 @@
                 </h1>
             </div>
         </section>
-
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-10 md:px-20">
             @if (isset($detail_gallery['pict']) && count($detail_gallery['pict']) > 0)
                 @foreach ($detail_gallery['pict'] as $pict)
                     <div class="bg-white rounded-xl shadow-md overflow-hidden">
                         <div class="relative">
-                            <img class="w-full h-48 object-cover"
-                                src="{{ $pict['image'] }}">
+                            <img alt="{{ $detail_gallery['title'] }}" class="w-full h-48 object-cover"
+                                src="{{ asset($pict['image']) }}">
                         </div>
                         <div class="p-4">
                             <div class="text-lg font-medium text-gray-800 mb-2">{{ $pict['title'] }}
