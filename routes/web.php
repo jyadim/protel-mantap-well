@@ -102,8 +102,7 @@ Route::get('/', function () {
             [
                 'title' => 'CV. Protel Multi Energy',
                 'image' => 'img/source/ref/inter/3.png',
-                'subtitle' => 'Specialized in
-                        Manufacturing of Electronic Load Controller, Cross flow and Pelton turbines'
+                'subtitle' => 'Specialized in Manufacturing of Electronic Load Controller, Crossflow and Pelton turbines'
             ]
         ]
     ]);
@@ -173,7 +172,7 @@ Route::get('/services', function () {
                                         of
                                         a small hydro project such as reconnaissance visit, flow and head measurement,
                                         topographic and demographic survey, detailed engineering design and budgeting.',
-                'image' => 'p balap'
+                'image' => 'img/'
             ],
             [
                 'id' => '2',
@@ -191,7 +190,7 @@ Route::get('/services', function () {
                                         system, grid connection facilities and necessary coordination for obtaining
                                         power
                                         purchase agreement.',
-                'image' => 'p balap'
+                'image' => 'iinn'
             ],
             [
                 'id' => '4',
@@ -220,6 +219,7 @@ Route::get('/gallery', function () {
                 'id' => '1',
                 'title' => 'Indonesia Project',
                 'slug' => 'indonesia-project',
+                'image' => 'img/source/ref/inter/2.png',
                 'description' => 'Since January 2011 we have succesfully installed over 1000 
                 units of Electronic load controller (ELC) In Indonesia and worldwide, ranging
                  from 3-250 kW with total installed capacity of about 15 MW. Our Turbines are 
@@ -231,6 +231,7 @@ Route::get('/gallery', function () {
                 'id' => '2',
                 'title' => 'International Project',
                 'slug' => 'international-project',
+                'image' => 'img/source/ref/inter/2.png',
                 'description' => 'Since January 2011 we have 
                 succesfully installed over 450 units of Electronic 
                 load controller (ELC) In Indonesia and abroad ranging,
@@ -336,6 +337,7 @@ Route::get('/product/{slug}', function ($slug) {
     $detproduct = [
         [
             'id' => '1',
+            'title' => 'Crossflow Turbine',
             'slug' => 'crossflow-turbine',
             'video' => 'mp4/crossflowturbine-wm.mp4',
             'image' => 'img/product/crossflow-wm.png',
@@ -343,18 +345,21 @@ Route::get('/product/{slug}', function ($slug) {
         [
             'id' => '2',
             'slug' => 'pelton-turbine',
+            'title' => 'Pelton Turbine',
             'video' => 'mp4/peltonturbine-wm.mp4',
             'image' => 'img/product/peltonturbine-wm.png',
         ],
         [
             'id' => '3',
             'slug' => 'electronic-load-controller',
+            'title' => 'Electronic Load Controller',
             'video' => 'mp4/peltonturbine-wm.mp4',
             'image' => 'img/product/elc-wm.png',
         ],
         [
             'id' => '4',
             'slug' => 'mechanical-electrical',
+            'title' => 'Mechanical & Electrical',
             'video' => 'mp4/peltonturbine-wm.mp4',
             'image' => 'img/source/product/mechanical/3.png
             ',
@@ -362,6 +367,7 @@ Route::get('/product/{slug}', function ($slug) {
         [
             'id' => '5',
             'slug' => 'micro-hydro-trainer-simulator',
+            'title' => 'Micro Hydro Trainer Simulator',
             'video' => 'mp4/peltonturbine-wm.mp4',
             'image' => 'img/product/trainer-remove.png',
         ]

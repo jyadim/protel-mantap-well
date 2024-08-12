@@ -54,7 +54,7 @@
                         d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                 </svg>
             </li>
-            <li><x-navlink href="contact" :active="request()->is('contact')">Contact Us</x-navlink></li>
+            <li><x-navlink href="/contact" :active="request()->is('contact')">Contact Us</x-navlink></li>
         </ul>
     </nav>
     <div class="navbar-menu relative z-50 hidden">

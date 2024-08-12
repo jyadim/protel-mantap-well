@@ -16,12 +16,12 @@
         <main>
             @foreach ($about as $abt)
                 <div class="sm:flex items-center max-w-screen-2xl mt-32 mb-10">
-                    <div class="flex justify-center sm:w-4/5 px-16">
+                    <div class="flex justify-center sm:w-4/5 px-11">
                         <div class="flex image object-center justify-center text-center">
                             <img class="rounded-2xl" src="{{ $abt['image'] }}">
                         </div>
                     </div>
-                    <div class="sm:w-3/4 p-5">
+                    <div class="sm:w-3/4 p-12">
                         <div class="text">
                             <span class="text-gray-500 border-b-2 border-lime-600 uppercase">About us</span>
                             <h2 class="my-4 font-bold text-3xl  sm:text-4xl ">About <span class="text-lime-600">Our
@@ -67,7 +67,6 @@
 
                             <!-- Team Members -->
                             <div class="flex flex-wrap">
-                                <!-- Member #1 -->
 
                                 @foreach ($team as $team)
                                     <div class="w-full md:w-6/12 lg:w-3/12 mb-6 px-6 sm:px-6 lg:px-4">
