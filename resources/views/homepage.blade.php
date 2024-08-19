@@ -16,13 +16,15 @@
     <div class="min-h-full">
         <x-navbar></x-navbar>
         <main>
-            @foreach ($banner as $head)
-            <!-- Banner Section -->
-            <section class="bg-[center_30%] bg-no-repeat bg-[url('{{ asset($head['image']) }}')] bg-gray-700 bg-blend-multiply h-svh mt-16">
-                <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+            @foreach($banner as $head)
+            <section class="relative bg-cover bg-center bg-no-repeat bg-gray-500 bg-blend-multiply h-[100vh] mt-16" style="background-image: url('{{ asset($head['image']) }}');">
+                <div class="flex flex-col justify-center items-center h-full text-center px-4 mx-auto max-w-screen-xl py-24 lg:py-56">
                     <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
-                        {{$head['title']}}</h1>
-                    <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">{{$head['subtitle']}}</p>
+                        {{$head['title']}}
+                    </h1>
+                    <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
+                        {{$head['subtitle']}}
+                    </p>
                     <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
                         <a href="/services"
                             class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
@@ -41,6 +43,8 @@
                 </div>
             </section>
             @endforeach
+            
+            
 
             <!-- Grid Section -->
             <div class="mx-auto max-w-2xl text-center mb-5 p-10">
@@ -93,7 +97,7 @@
                     <div class="container py-24 mx-auto max-w-7x1">
                         <div class="flex flex-wrap w-full mb-4 p-4">
                             <div class="w-full mb-6 lg:mb-0">
-                                <h1 class="sm:text-4xl text-5xl font-medium font-bold title-font mb-2 text-gray-900">News</h1>
+                                <h1 class="sm:text-4xl text-5xl font-medium title-font mb-2 text-gray-900">News</h1>
                                 <div class="h-1 w-20 bg-lime-500 rounded"></div>
                             </div>
                             <div class="w-full">
