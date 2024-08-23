@@ -2,163 +2,13 @@
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Gaskan;
 
 
-Route::get('/', function () {
-    return view('homepage', [
-        'prodhome' => [
-            [
-                'id' => '1',
-                'slug' => 'crossflow-turbine',
-                'title' => 'PME Bandung ',
-                'name' => 'Crossflow Turbine',
-                'image' => 'img/product/crossflow-wm.png'
-            ],
-            [
-                'id' => '2',
-                'slug' => 'pelton-turbine',
-                'title' => 'PME Bandung ',
-                'name' => 'Pelton Turbine',
-                'image' => 'img/product/peltonturbine-wm.png'
-            ],
-            [
-                'id' => '3',
-                'slug' => 'electronic-load-controller',
-                'title' => 'PME Bandung ',
-                'name' => 'Electronic Load Controller',
-                'image' => 'img/product/elc2-wm.png'
-            ],
-            [
-                'id' => '4',
-                'slug' => 'micro-hydro-trainer',
-                'title' => 'PME Bandung ',
-                'name' => 'Micro Hydro Trainer',
-                'image' => 'img/product/simulator-wm.png'
-            ],
-            [
-                'id' => '5',
-                'slug' => 'mechanical-electrical',
-                'title' => 'PME Bandung ',
-                'name' => 'Mechanical & Electrical',
-                'image' => 'img/source/product/mechanical/6.png'
-            ],
-        ],
-        'quickaccess' => [
-            [
-                'id' => '1',
-                'slug' => 'about-us',
-                'title' => 'About Us',
-                'image' => 'img/source/about/1.png',
-                'detail' => ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-            ],
-            [
-                'id' => '2',
-                'slug' => 'products',
-                'title' => 'Products',
-                'image' => 'img/source/product/cross/3.png',
-                'detail' => ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-            ],
-            [
-                'id' => '3',
-                'slug' => 'project-references',
-                'title' => 'References',
-                'image' => 'img/source/ref/inter/1.png',
-                'detail' => ' Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-            ],
-        ],
-        'news' => [
-            [
-                'id' => '1',
-                'slug' => 'micro-hydro-in-jakarta-area',
-                'title' => 'MICRO HYDRO IN JAKARTA AREA',
-                'date' => 'July 9, 2024',
-                'link' => 'https://www.youtube.com/embed/36LhTxd4n7s',
-                'author' => 'PME Bandung'
-            ],
-            [
-                'id' => '2',
-                'slug' => 'simulator-hydro-laboratory-for-polytechnic',
-                'title' => 'SIMULATOR HYDRO LABORATORY FOR POLYTECHNIC',
-                'date' => 'June 21, 2024',
-                'link' => 'https://www.youtube.com/embed/aqs4O1g0srU',
-                'author' => 'PME Bandung '
-            ],
-            [
-                'id' => '3',
-                'slug' => 'mikro-hydro-dari-irigasi-desa-poltek-negeri-semarang',
-                'title' => 'MIKRO HIDRO DARI IRIGASI DESA POLTEK NEGERI SEMARANG',
-                'date' => 'June 6, 2024',
-                'link' => 'https://www.youtube.com/embed/KIgqwrzrO5A',
-                'author' => 'PME Bandung'
-            ],
-        ],
-        'banner' => [
-            [
-                'title' => 'CV. Protel Multi Energy',
-                'image' => 'img/source/ref/inter/3.png',
-                'subtitle' => 'Specialized in Manufacturing of Electronic Load Controller, Crossflow and Pelton turbines'
-            ]
-        ]
-    ]);
-});
-Route::get('/about', function () {
-    return view('about', [
-        'about' => [
-            [
-                'id' => '1',
-                'image' => 'img/source/about/3.png',
-                'detail1' => ' CV. PROTEL MULTI ENERGY (PME) manufactures and supplies complete micro hydro power
-                            equipment, specializing in Crossflow and Pelton turbines with capacities up to 500 kW per
-                            unit. Our solutions, which include survey and design, site construction, equipment supply,
-                            and installation, are installed worldwide, providing renewable power to remote areas,
-                            schools, hospitals, and small businesses. We also offer products related to micro hydro
-                            power, such as small hydro laboratories for teaching, spare parts, mechanical and electrical
-                            components, and hydromechanical equipment. Notably, our Electronic Load Controller is used
-                            in over 1,200 micro hydro schemes globally, with a total capacity of about 15 MW.
-                            ',
-                'detail2' => 'Founded in 2011 by Mr. Komarudin, an electrical engineer with over 18 years of experience in
-                            renewable energy, PME is committed to sustainable, long-term cooperation in the micro hydro
-                            power field. Our focus on quality, competitiveness, and extensive R&D, in collaboration with
-                            leading technical and research institutes in Indonesia, has established us as a leading
-                            manufacturer of small hydro power equipment in Southeast Asia. Our mission is to empower
-                            rural communities with sustainable energy and technology through close, supportive
-                            relationships.'
-            ]
-        ],
-        'team' => [
-            [
-                'id' => '1',
-                'image' => 'https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?fit=clamp&w=400&h=400&q=80',
-                'name' => 'Tranter Jaskulski',
-                'position' => 'Founder & Specialist'
-            ],
-            [
-                'id' => '2',
-                'image' => 'https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?fit=clamp&w=400&h=400&q=80',
-                'name' => 'Tranter Jaskulski',
-                'position' => 'Founder & Specialist'
-            ],
-            [
-                'id' => '3',
-                'image' => 'https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?fit=clamp&w=400&h=400&q=80',
-                'name' => 'Tranter Jaskulski',
-                'position' => 'Founder & Specialist'
-            ],
-            [
-                'id' => '4',
-                'image' => 'https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?fit=clamp&w=400&h=400&q=80',
-                'name' => 'Tranter Jaskulski',
-                'position' => 'Founder & Specialist'
-            ],
-        ]
-    ]);
-});
+Route::get('/', [Gaskan::class, 'index']);
+
+Route::get('/about', [Gaskan::class,'titit']);
+
 Route::get('/contact', function () {
     return view('contactus', [
        'contact_info' => [
@@ -300,47 +150,8 @@ Route::get('/gallery', function () {
 
     ]);
 });
-Route::get('/product', function () {
-    return view('product', [
-        'product' => [
-            [
-                'id' => '1',
-                'slug' => 'crossflow-turbine',
-                'name' => 'Crossflow Turbine',
-                'image' => 'img/product/crossflow2-remove.png',
-                'detailprod' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!'
-            ],
-            [
-                'id' => '2',
-                'slug' => 'pelton-turbine',
-                'name' => 'Pelton Turbine',
-                'image' => 'img/product/pelton.png',
-                'detailprod' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!'
-            ],
-            [
-                'id' => '3',
-                'slug' => 'electronic-load-controller',
-                'name' => 'Electronic Load Controller',
-                'image' => 'img/product/elc2-remove.png',
-                'detailprod' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!'
-            ],
-            [
-                'id' => '4',
-                'slug' => 'mechanical-electrical',
-                'name' => 'Mechanical & Electrical',
-                'image' => 'img/source/product/mechanical/4.png',
-                'detailprod' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!'
-            ],
-            [
-                'id' => '5',
-                'slug' => 'micro-hydro-trainer-simulator',
-                'name' => 'Micro Hydro Simulator',
-                'image' => 'img/product/trainer-remove.png',
-                'detailprod' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!'
-            ]
-        ]
-    ]);
-});
+Route::get('/product', [Gaskan::class,'madep']);
+
 Route::get('/product/{slug}', function ($slug) {
     $detproduct = [
         [

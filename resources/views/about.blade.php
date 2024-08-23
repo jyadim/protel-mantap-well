@@ -15,10 +15,10 @@
         <x-navbar></x-navbar>
         <main>
             @foreach ($about as $abt)
-                <div class="sm:flex items-center max-w-screen-2xl mt-32 mb-10">
+                <div class="sm:flex items-center max-w-screen-2xl mt-20 mb-10">
                     <div class="flex justify-center sm:w-4/5 px-11">
                         <div class="flex image object-center justify-center text-center">
-                            <img class="rounded-2xl" src="{{ $abt['image'] }}">
+                            <img class="rounded-2xl" src="{{ $abt->image_path }}">
                         </div>
                     </div>
                     <div class="sm:w-3/4 p-12">
@@ -28,11 +28,11 @@
                                     Company</span>
                             </h2>
                             <p class="text-gray-700 text-justify">
-                                {{ $abt['detail1'] }}
+                                {{ $abt->description1 }}
                             </p>
                             <p class="text-gray-700 text-justify">
                                 <br><br>
-                                {{ $abt['detail2'] }}
+                                {{ $abt->description2}}
                             </p>
                         </div>
                     </div>
@@ -74,20 +74,17 @@
                                             <!-- Avatar -->
                                             <a href="#" class="mx-auto">
                                                 <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100"
-                                                    src="{{ $team['image'] }}">
+                                                    src="{{ $team->image_path  }}">
                                             </a>
 
                                             <!-- Details -->
                                             <div class="text-center mt-6">
                                                 <!-- Name -->
                                                 <h1 class="text-gray-900 text-xl font-bold mb-1">
-                                                   {{$team['name']}}
+                                                   {{$team->team_name}}
                                                 </h1>
 
-                                                <!-- Title -->
-                                                <div class="text-gray-700 font-light mb-2">
-                                                    {{ $team['position'] }}
-                                                </div>
+                                            
 
                                                 <!-- Social Icons -->
 
