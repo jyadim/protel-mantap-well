@@ -88,42 +88,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="flex flex-col md:flex-row mt-28">
-
-
-                <div class="flex-1 flex flex-col sm:flex-row flex-wrap mt-3 mx-1">
-                    <div class="w-full sm:w-1/2 mb-3 px-1">
-                        <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-l-0 rounded-br-xl"> <!-- Further reduced padding -->
-                            <h3 class="text-xl font-bold text-md mb-3">Dynamic Personalization:</h3> <!-- Further reduced margin below heading -->
-                            <p class="text-xs">Our platform leverages user data and behavior to provide a highly personalized experience, with dynamic content and product recommendations that change in real-time.</p>
-                        </div>
-                    </div>
-                    <div class="w-full sm:w-1/2 mb-3 px-1">
-                        <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-l-0 rounded-br-xl">
-                            <h3 class="text-xl font-bold text-md mb-3">Mobile-Optimized Interface</h3>
-                            <p class="text-xs">Our website is designed with a mobile-first approach, offering a seamless browsing experience across all devices, including smartphones and tablets.</p>
-                        </div>
-                    </div>
-
-                    <div class="w-full sm:w-1/2 mb-3 px-1">
-                        <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-l-0 rounded-br-xl">
-                            <h3 class="text-xl font-bold text-md mb-3">24/7 Customer Support</h3>
-                            <p class="text-xs">Our U.S.-based customer support team is available around the clock to answer any questions, resolve any issues, and provide helpful solutions. Whether it's through email, phone, or live chat, we're always here to support you.</p>
-                        </div>
-                    </div>
-
-                    <div class="w-full sm:w-1/2 mb-3 px-1">
-                        <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-l-0 rounded-br-xl">
-                            <h3 class="text-xl font-bold text-md mb-3">Secure Payment Processing</h3>
-                            <p class="text-xs">We use cutting-edge security measures to protect our customers' sensitive information and ensure the safety of all transactions made on our site.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="mr-0 md:mr-4 lg:w-[28rem] lg:h-[20rem] "> <!-- Further reduced margin and size -->
-                    <img class="w-full h-full" src="{{ asset($detail_product['image']) }}" alt="can_help_banner">
-                </div>
             </div>
             <hr class="mt-24">
         </div>
