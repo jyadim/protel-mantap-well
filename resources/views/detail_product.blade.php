@@ -42,89 +42,66 @@
     <div class="min-h-full">
         <x-navbar></x-navbar>
         <div class="video-container">
-            <video autoplay muted loop>
-                <source src="{{ asset($detail_product['video']) }}" type="video/mp4">
+            @if($detailProducts->video)
+            <video autoplay muted>
+                <source src="{{ asset($detailProducts->video) }}" type="video/mp4">
+                Your browser does not support the video tag.
             </video>
+        @else
+        <h2 class="text-xl text-red-700 tracking-tight text-primary-800">We're Sorry, No Video Available Right Now</h2>
+        @endif
         </div>
 
         <div class="max-w-screen-xl mx-auto px-4 lg:py-10 lg:px-6 mt-20"> <!-- Further reduced top and bottom padding -->
             <hr>
             <div class="text-center mb-20 mt-20"> <!-- Further reduced margin below heading -->
-                <h2 class="text-4xl tracking-tight font-bold text-primary-800">Highlighted Features of {{ $detail_product['title'] }}</h2>
+                <h2 class="text-4xl tracking-tight font-bold text-primary-800">Highlighted Features of {{ $detailProducts->title }}</h2>
             </div>
 
-            <div class="flex flex-col md:flex-row">
-                <!-- can help image -->
-                <div class="mr-0 md:mr-4 lg:w-[28rem] lg:h-[20rem]"> <!-- Further reduced margin and size -->
-                    <img class="w-full h-full" src="{{ asset($detail_product['image']) }}" alt="can_help_banner">
+            <div class="container mx-auto">
+
+                <!-- First Section: 4 Description Points and 1 Picture -->
+                <div class="flex flex-col md:flex-row mt-8">
+                    <div class="mr-0 md:mr-4 lg:w-[28rem] lg:h-[20rem]">
+                        <img class="w-full h-full rounded-xl" src="{{ asset($detailProducts->image1) }}" alt="can_help_banner">
+                    </div>
+                    <div class="flex-1 flex flex-col sm:flex-row flex-wrap">
+                        @foreach ($detailProducts->descriptionPoints->take(4) as $det)
+                            <div class="w-full sm:w-1/2 mb-3 px-1">
+                                <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-l-0 rounded-br-xl">
+                                    <h3 class="text-xl font-bold text-md mb-3">{{ $det->title }}:</h3>
+                                    <p class="text-xs">{{ $det->desc }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+            
+                    <!-- Picture -->
+                    
                 </div>
-                <!-- end can help image -->
-
-                <div class="flex-1 flex flex-col sm:flex-row flex-wrap mt-3 mx-1">
-                    <div class="w-full sm:w-1/2 mb-3 px-1">
-                        <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-l-0 rounded-br-xl"> <!-- Further reduced padding -->
-                            <h3 class="text-xl font-bold text-md mb-3">Dynamic Personalization:</h3> <!-- Further reduced margin below heading -->
-                            <p class="text-xs">Our platform leverages user data and behavior to provide a highly personalized experience, with dynamic content and product recommendations that change in real-time.</p>
-                        </div>
+            
+                <!-- Second Section: Remaining Description Points and 1 Picture -->
+                <div class="flex flex-col md:flex-row mt-20">
+                    <!-- Descriptions -->
+                    <div class="flex-1 flex flex-col sm:flex-row flex-wrap">
+                        @foreach ($detailProducts->descriptionPoints->skip(4) as $det)
+                            <div class="w-full sm:w-1/2 mb-3 px-1">
+                                <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-l-0 rounded-br-xl">
+                                    <h3 class="text-xl font-bold text-md mb-3">{{ $det->title }}:</h3>
+                                    <p class="text-xs">{{ $det->desc }}</p>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                    <div class="w-full sm:w-1/2 mb-3 px-1">
-                        <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-l-0 rounded-br-xl">
-                            <h3 class="text-xl font-bold text-md mb-3">Mobile-Optimized Interface</h3>
-                            <p class="text-xs">Our website is designed with a mobile-first approach, offering a seamless browsing experience across all devices, including smartphones and tablets.</p>
-                        </div>
-                    </div>
-
-                    <div class="w-full sm:w-1/2 mb-3 px-1">
-                        <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-l-0 rounded-br-xl">
-                            <h3 class="text-xl font-bold text-md mb-3">24/7 Customer Support</h3>
-                            <p class="text-xs">Our U.S.-based customer support team is available around the clock to answer any questions, resolve any issues, and provide helpful solutions. Whether it's through email, phone, or live chat, we're always here to support you.</p>
-                        </div>
-                    </div>
-
-                    <div class="w-full sm:w-1/2 mb-3 px-1">
-                        <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-l-0 rounded-br-xl">
-                            <h3 class="text-xl font-bold text-md mb-3">Secure Payment Processing</h3>
-                            <p class="text-xs">We use cutting-edge security measures to protect our customers' sensitive information and ensure the safety of all transactions made on our site.</p>
-                        </div>
+            
+                    <!-- Picture -->
+                    <div class="mr-0 md:ml-4 lg:w-[28rem] lg:h-[20rem]">
+                        <img class="w-full h-full rounded-xl" src="{{ asset($detailProducts->image2) }}" alt="can_help_banner">
                     </div>
                 </div>
+            
             </div>
-
-            <div class="flex flex-col md:flex-row mt-28">
-
-
-                <div class="flex-1 flex flex-col sm:flex-row flex-wrap mt-3 mx-5 mr-">
-                    <div class="w-full sm:w-1/2 mb-3 px-1">
-                        <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-r-0 rounded-bl-xl"> <!-- Further reduced padding -->
-                            <h3 class="text-xl font-bold text-md mb-3">Dynamic Personalization:</h3> <!-- Further reduced margin below heading -->
-                            <p class="text-xs">Our platform leverages user data and behavior to provide a highly personalized experience, with dynamic content and product recommendations that change in real-time.</p>
-                        </div>
-                    </div>
-                    <div class="w-full sm:w-1/2 mb-3 px-1">
-                        <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-r-0 rounded-bl-xl">
-                            <h3 class="text-xl font-bold text-md mb-3">Mobile-Optimized Interface</h3>
-                            <p class="text-xs">Our website is designed with a mobile-first approach, offering a seamless browsing experience across all devices, including smartphones and tablets.</p>
-                        </div>
-                    </div>
-
-                    <div class="w-full sm:w-1/2 mb-3 px-1">
-                        <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-r-0 rounded-bl-xl">
-                            <h3 class="text-xl font-bold text-md mb-3">24/7 Customer Support</h3>
-                            <p class="text-xs">Our U.S.-based customer support team is available around the clock to answer any questions, resolve any issues, and provide helpful solutions. Whether it's through email, phone, or live chat, we're always here to support you.</p>
-                        </div>
-                    </div>
-
-                    <div class="w-full sm:w-1/2 mb-3 px-1">
-                        <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-r-0 rounded-bl-xl">
-                            <h3 class="text-xl font-bold text-md mb-3">Secure Payment Processing</h3>
-                            <p class="text-xs">We use cutting-edge security measures to protect our customers' sensitive information and ensure the safety of all transactions made on our site.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="mr-0 md:mr-3 lg:w-[28rem] lg:h-[20rem] "> <!-- Further reduced margin and size -->
-                    <img class="w-full h-full" src="{{ asset($detail_product['image']) }}" alt="can_help_banner">
-                </div>
-            </div>
+            
             <hr class="mt-24">
         </div>
 
@@ -132,7 +109,7 @@
             <div class="w-full mx-auto max-w-4xl flex flex-col justify-center relative p-4 sm:p-6">
                 <div class="prose text-gray-500 prose-sm prose-headings:font-normal prose-headings:text-lg sm:prose-headings:text-xl"> <!-- Ukuran heading lebih kecil pada mobile -->
                     <div>
-                        <h1 class="text-base sm:text-lg">Image gallery of {{ $detail_product['title'] }}</h1> <!-- Ukuran teks heading lebih kecil -->
+                        <h1 class="text-base sm:text-lg">Image gallery of {{ $detailProducts['title'] }}</h1> <!-- Ukuran teks heading lebih kecil -->
                         <p class="text-xs sm:text-sm text-balance"> <!-- Ukuran teks paragraf lebih kecil -->
                             Click on the image to view it in full screen and click outside the
                             image or press ESC to close it (if using pc/laptop).

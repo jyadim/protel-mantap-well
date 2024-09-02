@@ -27,8 +27,8 @@
                         class="p-5 py-10 bg-blue-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer">
                         <img src="{{ $product->image_path }}" alt="">
 
-                        <h1 class="text-3xl my-5">{{ $product->title }}</h1>
-                        <p class="mb-5">{{ $product->desc }}
+                        <h1 class="text-3xl my-5 ">{{ $product->title }}</h1>
+                        <p class="mb-5 text-justify">{{ $product->desc }}
                         </p>
                         <a class="p-2 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600" href="/product/{{ $product->slug }}">Detail</a>
                     </section>

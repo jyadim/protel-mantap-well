@@ -25,31 +25,31 @@ class ProductSeeder extends Seeder
                     'slug' => 'crossflow-turbine',
                     'title' => 'Crossflow Turbine',
                     'image_path' => 'img/product/crossflow2-remove.png',
-                    'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!'
+                    'desc' => 'Crossflow turbine is a water turbine with a drum-shaped rotor that allows water to flow through it twice. Its efficient for small hydro projects due to its ability to handle varying flow rates.'
                 ],
                 [
                     'slug' => 'pelton-turbine',
                     'title' => 'Pelton Turbine',
                     'image_path' => 'img/product/pelton.png',
-                    'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!'
+                    'desc' => 'Pelton turbine is a high-head impulse turbine with a wheel and buckets. It converts high-pressure water jets into mechanical energy, suitable for high-head hydroelectric projects.'
                 ],
                 [
                     'slug' => 'electronic-load-controller',
                     'title' => 'Electronic Load Controller',
                     'image_path' => 'img/product/elc2-remove.png',
-                    'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!'
+                    'desc' => 'Electronic Load Controller (ELC) manages excess electricity in micro-hydro systems by diverting it to a dump load, ensuring stable operation and protecting the generator.'
                 ],
                 [
                     'slug' => 'mechanical-electrical',
                     'title' => 'Mechanical & Electrical',
                     'image_path' => 'img/source/product/mechanical/4.png',
-                    'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!'
+                    'desc' => 'Mechanical & Electrical (M&E) involves the design and management of systems like power, lighting, and HVAC in buildings and infrastructure to ensure efficient operation.'
                 ],
                 [
                     'slug' => 'micro-hydro-trainer-simulator',
                     'title' => 'Micro Hydro Simulator',
                     'image_path' => 'img/product/trainer-remove.png',
-                    'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, incidunt!'
+                    'desc' => 'Micro Hydro Trainer is a device used for training on micro-hydro power systems, simulating turbine, generator, and control operations for educational purposes.'
                 ]
             ];
 

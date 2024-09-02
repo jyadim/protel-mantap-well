@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\PictService;
+use App\Models\Service;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +24,12 @@ class DatabaseSeeder extends Seeder
             AboutSeeder::class,
             TeamSeeder::class,
             ProductSeeder::class,
+            ServiceSeeder::class,
+            PictServiceSeeder::class,
+            ReferencesTableSeeder::class,
+            ContactInfoSeeder::class,
+            DetailProductSeeder::class,
+            DetailGallery::class,
         ]);
     }
 }

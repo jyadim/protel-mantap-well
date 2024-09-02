@@ -53,15 +53,6 @@
                             <path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"></path>
                     </svg>
                 </a>
-                <a href="/"
-                    class="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400">
-                    <svg viewBox="0 0 30 30" fill="currentColor" class="h-7">
-                        <circle cx="15" cy="15" r="4"></circle>
-                        <path
-                            d="M19.999,3h-10C6.14,3,3,6.141,3,10.001v10C3,23.86,6.141,27,10.001,27h10C23.86,27,27,23.859,27,19.999v-10   C27,6.14,23.859,3,19.999,3z M15,21c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S18.309,21,15,21z M22,9c-0.552,0-1-0.448-1-1   c0-0.552,0.448-1,1-1s1,0.448,1,1C23,8.552,22.552,9,22,9z">
-                        </path>
-                    </svg>
-                </a>
                 <a href="https://www.facebook.com/komarudin.bagar?mibextid=ZbWKwL"
                     class="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400">
                     <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">

@@ -30,7 +30,7 @@
                         </p>
                         <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
                             <a href="/services"
-                                class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                                class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-blue-300">
                                 Get started
                                 <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -61,7 +61,7 @@
                     <div
                         class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl items-center">
                         <a href="/product/{{ $prod->slug }}">
-                            <img src="{{ $prod->image_path }}" alt="Product"
+                            <img src="{{ asset('storage/'.$prod->image_path) }}" alt="Product"
                                 class="h-80 w-72 object-cover rounded-t-xl" />
                             <div class="px-4 py-3 w-72">
                                 <span class="text-gray-400 mr-3 uppercase text-xs">{{ $prod->author->name }}</span>
@@ -92,7 +92,7 @@
                                     class="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl hover:underline">
                                     {{ $qa->title }}</h1>
                                 <p class="mx-auto text-base leading-relaxed text-gray-500">
-                                    {{ Str::limit($qa->detail, '100') }}</p>
+                                    {{ Str::limit($qa->detail, '150') }}</p>
                                 <div class="mt-4">
                                     <a href="/{{$qa->slug}}"
                                         class="inline-flex items-center mt-4 font-semibold text-lime-600 lg:mb-0 hover:text-lime-700 hover:underline"

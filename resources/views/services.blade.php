@@ -65,34 +65,32 @@
                     @foreach ($services as $service)
                         <div class="card-container">
                             <div class="relative overflow-hidden rounded-lg border bg-white select-none hover:shadow hover:shadow-lime-200 p-2 expandable"
-                                data-target="{{ $service['id'] }}">
+                                data-target="{{ $service->id }}">
                                 <div class="flex h-[300px] flex-col justify-between rounded-md p-6">
                                     <div class="space-y-2">
-                                        <h3 class="font-bold">{{ $service['title'] }}</h3>
-                                        <p class="text-sm text-muted-foreground">{{ $service['detail'] }}
-                                        </p>
+                                        <h3 class="font-bold">{{ $service->title }}</h3>
+                                        <p class="text-sm text-muted-foreground">{{ $service->desc }}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div id="{{ $service['id'] }}" class="details">
+                            <div id="{{ $service->id }}" class="details">
                                 <div class="relative">
-                                    <div class="carousel max-w-xl flex">
-                                        <!-- Carousel items -->
-                                        <div class="carousel-item">
-                                            <img src="https://source.unsplash.com/random/800x600" alt="Carousel Image 1"
-                                                class="w-full h-96 object-cover">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="https://source.unsplash.com/random/800x600?2" alt="Carousel Image 2"
-                                                class="w-full h-96 object-cover">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="https://source.unsplash.com/random/800x600?3" alt="Carousel Image 3"
-                                                class="w-full h-96 object-cover">
-                                        </div>
+                                    <div class="space-y-2 mb-5 text-sm">
+                                        <h3 class="font-bold">Some Photo's of {{ $service->title }}</h3>
                                     </div>
-                                
-                                    <!-- Carousel controls -->
+                                    <div class="carousel max-w-xl flex">
+                                        @if ($service->pictures->isNotEmpty())
+                                            @foreach ($service->pictures as $picture)
+                                                <div class="carousel-item">
+                                                    <img src="{{ $picture->image_path }}"
+                                                        alt="Carousel Image {{ $loop->index + 1 }}"
+                                                        class="w-full h-96 object-cover">
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <p>No pictures available for this service.</p>
+                                        @endif
+                                    </div>
                                     <div class="absolute inset-y-0 left-0 flex items-center justify-start pl-4">
                                         <button
                                             class="carousel-control-prev bg-gray-800 hover:bg-gray-700 text-white rounded-full p-2 focus:outline-none">
@@ -115,52 +113,54 @@
                             </div>
                         </div>
                     @endforeach
+
                 </div>
+    </div>
+    </div>
 
-            </section>
+    </section>
 
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-    // Handle expandable content
-    var expandables = document.querySelectorAll('.expandable');
-    expandables.forEach(function(expandable) {
-        expandable.addEventListener('click', function() {
-            var targetId = this.getAttribute('data-target');
-            var content = document.getElementById(targetId);
-            if (content.style.display === 'none' || content.style.display === '') {
-                content.style.display = 'block';
-            } else {
-                content.style.display = 'none';
-            }
-        });
-    });
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle expandable content
+            var expandables = document.querySelectorAll('.expandable');
+            expandables.forEach(function(expandable) {
+                expandable.addEventListener('click', function() {
+                    var targetId = this.getAttribute('data-target');
+                    var content = document.getElementById(targetId);
+                    if (content.style.display === 'none' || content.style.display === '') {
+                        content.style.display = 'block';
+                    } else {
+                        content.style.display = 'none';
+                    }
+                });
+            });
 
-    // Handle carousels
-    const carousels = document.querySelectorAll('.carousel');
-    carousels.forEach(carousel => {
-        const prevButton = carousel.parentElement.querySelector('.carousel-control-prev');
-        const nextButton = carousel.parentElement.querySelector('.carousel-control-next');
-        
-        prevButton.addEventListener('click', () => {
-            carousel.scrollBy({
-                left: -carousel.offsetWidth,
-                behavior: 'smooth'
+            // Handle carousels
+            const carousels = document.querySelectorAll('.carousel');
+            carousels.forEach(carousel => {
+                const prevButton = carousel.parentElement.querySelector('.carousel-control-prev');
+                const nextButton = carousel.parentElement.querySelector('.carousel-control-next');
+
+                prevButton.addEventListener('click', () => {
+                    carousel.scrollBy({
+                        left: -carousel.offsetWidth,
+                        behavior: 'smooth'
+                    });
+                });
+
+                nextButton.addEventListener('click', () => {
+                    carousel.scrollBy({
+                        left: carousel.offsetWidth,
+                        behavior: 'smooth'
+                    });
+                });
             });
         });
+    </script>
 
-        nextButton.addEventListener('click', () => {
-            carousel.scrollBy({
-                left: carousel.offsetWidth,
-                behavior: 'smooth'
-            });
-        });
-    });
-});
-
-            </script>
-         
-        </main>
-        <x-footer></x-footer>
+    </main>
+    <x-footer></x-footer>
 </body>
 
 </html>

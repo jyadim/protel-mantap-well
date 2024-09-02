@@ -10,5 +10,8 @@ class Banner extends Model
 
     protected $fillable = ['title', 'subtitle', 'image_path', 'image_name']; // Pastikan kolom ini dapat diisi
 
-
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

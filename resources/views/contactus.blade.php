@@ -22,7 +22,7 @@
             <div>
             <div id="map" class="mt-16 relative h-[300px] overflow-hidden bg-cover bg-[50%] bg-no-repeat">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.1717072224415!2d107.5493138143469!3d-6.870018469126014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e434be67b353%3A0x65421b7cacf3aaad!2sProtel+Multi+Energy!5e0!3m2!1sid!2sid!4v1560907933897!5m2!1sid!2sid"
+                    src="{{$contact_info->link_maps}}"
                     width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <div class="container px-6 md:px-12 ">
@@ -131,10 +131,10 @@
                                                 Technical support
                                             </p>
                                             <p class="text-sm text-neutral-500">
-                                                {{$contact_info['email']}}
+                                                {{$contact_info->email}}
                                             </p>
                                             <p class="text-sm text-neutral-500">
-                                                {{$contact_info['mobile']}}
+                                                {{$contact_info->mobile}}
                                             </p>
                                         </div>
                                     </div>
@@ -157,7 +157,7 @@
                                                 Address
                                             </p>
                                             <p class="text-sm text-neutral-500">
-                                                {{$contact_info['address']}} <br>
+                                                {{$contact_info->address}} <br>
                                             </p>
                                         </div>
                                     </div>
@@ -181,7 +181,7 @@
                                         </div>
                                         <div class="ml-6 grow">
                                             <p class="mb-2 font-bold ">Land Line</p>
-                                            <p class="text-neutral-500"> {{$contact_info['land_line']}}
+                                            <p class="text-neutral-500"> {{$contact_info->land_line}}
                                             </p>
                                         </div>
                                     </div>
