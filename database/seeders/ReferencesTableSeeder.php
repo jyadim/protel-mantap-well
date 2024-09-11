@@ -43,7 +43,7 @@ class ReferencesTableSeeder extends Seeder
             [
                 'slug' => 'partners',
                 'image' => 'img/source/ref/indonesia/3.png',
-                'title' => '',
+                'title' => 'partners',
                 'description' => '',
                 'partners' => [
                     [

@@ -60,6 +60,7 @@
                     </p>
 
                 </div>
+                <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.9.5/dist/alpine.js"></script>
 
                 <div class="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3">
                     @foreach ($services as $service)
@@ -82,7 +83,7 @@
                                         @if ($service->pictures->isNotEmpty())
                                             @foreach ($service->pictures as $picture)
                                                 <div class="carousel-item">
-                                                    <img src="{{ $picture->image_path }}"
+                                                    <img src="{{ asset('storage/image/service_image/'.$picture->image_path) }}"
                                                         alt="Carousel Image {{ $loop->index + 1 }}"
                                                         class="w-full h-96 object-cover">
                                                 </div>
@@ -119,8 +120,7 @@
     </div>
 
     </section>
-
-    <script>
+ <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Handle expandable content
             var expandables = document.querySelectorAll('.expandable');
@@ -158,6 +158,7 @@
             });
         });
     </script>
+   
 
     </main>
     <x-footer></x-footer>

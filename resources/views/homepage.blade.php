@@ -18,7 +18,7 @@
         <main>
             @foreach ($banner as $head)
                 <section class="relative bg-cover bg-center bg-no-repeat bg-gray-400 bg-blend-multiply h-[100vh] mt-16"
-                    style="background-image: url('{{ asset($head->image_path) }}');">
+                    style="background-image: url('{{ asset('storage/image/home_image/'.$head->image_path) }}');">
                     <div
                         class="flex flex-col justify-center items-center h-full text-center px-4 mx-auto max-w-screen-xl py-24 lg:py-56">
                         <h1
@@ -61,7 +61,7 @@
                     <div
                         class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl items-center">
                         <a href="/product/{{ $prod->slug }}">
-                            <img src="{{ asset('storage/'.$prod->image_path) }}" alt="Product"
+                            <img src="{{ asset('storage/image/home_image/'.$prod->image_path) }}" alt="Product"
                                 class="h-80 w-72 object-cover rounded-t-xl" />
                             <div class="px-4 py-3 w-72">
                                 <span class="text-gray-400 mr-3 uppercase text-xs">{{ $prod->author->name }}</span>
@@ -87,7 +87,7 @@
                         @foreach ($quickaccess as $qa)
                             <div class="p-6">
                                 <img class="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl"
-                                    src=" {{ $qa->image_path }} " alt="blog">
+                                    src=" {{ asset('storage/image/home_image/'.$qa->image_path) }} " alt="blog">
                                 <h1
                                     class="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl hover:underline">
                                     {{ $qa->title }}</h1>

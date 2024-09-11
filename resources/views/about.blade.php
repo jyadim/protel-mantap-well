@@ -18,7 +18,7 @@
                 <div class="sm:flex items-center max-w-screen-2xl mt-20 mb-10">
                     <div class="flex justify-center sm:w-4/5 px-11">
                         <div class="flex image object-center justify-center text-center">
-                            <img class="rounded-2xl" src="{{ $abt->image_path }}">
+                            <img class="rounded-2xl" src="{{ asset('storage/image/about/'.$abt->image_path) }}">
                         </div>
                     </div>
                     <div class="sm:w-3/4 p-12">
@@ -74,7 +74,7 @@
                                             <!-- Avatar -->
                                             <a href="#" class="mx-auto">
                                                 <img class="rounded-2xl drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100"
-                                                    src="{{ $team->image_path  }}">
+                                                    src="{{ asset('storage/image/about/'.$team->image_path)  }}">
                                             </a>
 
                                             <!-- Details -->

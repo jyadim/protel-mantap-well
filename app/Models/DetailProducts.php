@@ -16,4 +16,8 @@ class DetailProducts extends Model
     {
         return $this->hasMany(DescriptionPoints::class, 'products_id');
     }
+    public function productgallery()
+    {
+        return $this->hasMany(productgallery::class, 'products_id');
+    }
 }

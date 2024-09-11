@@ -10,11 +10,12 @@ class DetailProductController extends Controller
     // Display a listing of the resource.
     public function index($slug)
     {
-        // Fetch the DetailProducts along with its related DescriptionPoints
+        // Cek apakah slug adalah home_slug atau prod_slug
         $detailProducts = DetailProducts::where('slug', $slug)
+            ->orWhere('home_slug', $slug)
             ->with('descriptionPoints')
             ->firstOrFail();
-    
+
         return view('detail_product', compact('detailProducts'));
     }
     

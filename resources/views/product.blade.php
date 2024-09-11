@@ -25,7 +25,7 @@
                 @foreach ($product as $product)
                     <section
                         class="p-5 py-10 bg-blue-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer">
-                        <img src="{{ $product->image_path }}" alt="">
+                        <img src="{{ asset('storage/image/product/'.$product->image_path) }}" alt="">
 
                         <h1 class="text-3xl my-5 ">{{ $product->title }}</h1>
                         <p class="mb-5 text-justify">{{ $product->desc }}

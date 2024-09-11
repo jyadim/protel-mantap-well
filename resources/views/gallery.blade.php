@@ -18,7 +18,7 @@
             <section class="text-gray-700 body-font border-t border-gray-200">
                 <div class="container mx-auto flex px-5 py-24 flex-col md:flex-row items-center">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                        <img class="object-cover object-center rounded" alt="{{ $reference['title'] }}" src="{{ $reference['image'] }}">
+                        <img class="object-cover object-center rounded" alt="{{ $reference['title'] }}" src="{{ asset('storage/image/references/'.$reference['image']) }}">
                     </div>
                     <div class="lg:flex-grow md:w-1/2 lg:pl-20 flex flex-col md:items-start md:text-left items-center text-justify">
                         <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ $reference['title'] }}</h1>
@@ -36,7 +36,7 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-full mb-6 md:mb-0">
-                        <img alt="feature" class="object-cover object-center h-full w-full" src="{{ $reference['image'] }}">
+                        <img alt="feature" class="object-cover object-center h-full w-full" src="{{ asset('storage/image/references/'.$reference['image']) }}">
                     </div>
                     <div class="md:w-1/2 w-full lg:pl-16">
                         <div class="grid grid-cols-2 gap-4">

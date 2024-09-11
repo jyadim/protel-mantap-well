@@ -26,7 +26,7 @@
                 @foreach ($detail_gallery->pictures as $pict)
                     <div class="bg-white rounded-xl shadow-md overflow-hidden">
                         <div class="relative">
-                            <img alt="{{ $pict->title }}" class="w-full h-48 object-cover" src="{{ asset($pict->image) }}">
+                            <img alt="{{ $pict->title }}" class="w-full h-48 object-cover" src="{{ asset('storage/image/references/'.$pict->image) }}">
                         </div>
                         <div class="p-4">
                             <div class="text-lg font-medium text-gray-800 mb-2">{{ $pict->title }}

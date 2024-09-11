@@ -44,7 +44,7 @@
         <div class="video-container">
             @if($detailProducts->video)
             <video autoplay muted>
-                <source src="{{ asset($detailProducts->video) }}" type="video/mp4">
+                <source src="{{ asset('storage/video/'.$detailProducts->video) }}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         @else
@@ -63,7 +63,7 @@
                 <!-- First Section: 4 Description Points and 1 Picture -->
                 <div class="flex flex-col md:flex-row mt-8">
                     <div class="mr-0 md:mr-4 lg:w-[28rem] lg:h-[20rem]">
-                        <img class="w-full h-full rounded-xl" src="{{ asset($detailProducts->image1) }}" alt="can_help_banner">
+                        <img class="w-full h-full rounded-xl" src="{{ asset('storage/image/product/'.$detailProducts->image1) }}" alt="can_help_banner">
                     </div>
                     <div class="flex-1 flex flex-col sm:flex-row flex-wrap">
                         @foreach ($detailProducts->descriptionPoints->take(4) as $det)
@@ -96,7 +96,7 @@
             
                     <!-- Picture -->
                     <div class="mr-0 md:ml-4 lg:w-[28rem] lg:h-[20rem]">
-                        <img class="w-full h-full rounded-xl" src="{{ asset($detailProducts->image2) }}" alt="can_help_banner">
+                        <img class="w-full h-full rounded-xl" src="{{ asset('storage/image/product/'.$detailProducts->image2) }}" alt="can_help_banner">
                     </div>
                 </div>
             
@@ -124,26 +124,15 @@
                             }
                         });
                     }">
-                        <div class="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-5"> <!-- Mengubah grid untuk mobile -->
-                            <div x-on:click="currentImage = 'https://i.pinimg.com/564x/59/41/a0/5941a02c048f6226031a0487451c2651.jpg'"
-                                class="cursor-pointer">
-                                <img src="https://i.pinimg.com/564x/59/41/a0/5941a02c048f6226031a0487451c2651.jpg"
-                                     alt="Image 1"
+                    <div class="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-5">
+                        @foreach($detailProducts->productgallery as $image)
+                            <div x-on:click="currentImage = '{{ asset('storage/image/product/' . $image->image) }}'" class="cursor-pointer">
+                                <img src="{{ asset('storage/image/product/' . $image->image) }}" alt="Image {{ $loop->index + 1 }}"
                                      class="w-full h-auto aspect-[1] object-cover">
                             </div>
-                            <div x-on:click="currentImage = 'https://i.pinimg.com/736x/70/25/f6/7025f63ebdd1caa11b47889c4c4d8fcd.jpg'"
-                                class="cursor-pointer">
-                                <img src="https://i.pinimg.com/736x/70/25/f6/7025f63ebdd1caa11b47889c4c4d8fcd.jpg"
-                                     alt="Image 2"
-                                     class="w-full h-auto aspect-[1] object-cover">
-                            </div>
-                            <div x-on:click="currentImage = 'https://i.pinimg.com/564x/4e/a7/ff/4ea7ff230ad9f3bc1c30b1b6cbaccad3.jpg'"
-                                class="cursor-pointer">
-                                <img src="https://i.pinimg.com/564x/4e/a7/ff/4ea7ff230ad9f3bc1c30b1b6cbaccad3.jpg"
-                                     alt="Image 3"
-                                     class="w-full h-auto aspect-[1] object-cover">
-                            </div>
-                        </div>
+                        @endforeach
+                    </div>
+                    
                         <!-- Modal -->
                         <div x-show="currentImage"
                             class="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-80 transition-opacity duration-300"
