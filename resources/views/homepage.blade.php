@@ -17,7 +17,7 @@
         <x-navbar></x-navbar>
         <main>
             @foreach ($banner as $head)
-                <section class="relative bg-cover bg-center bg-no-repeat bg-gray-400 bg-blend-multiply h-[100vh] mt-16"
+                <section class="relative bg-cover bg-center bg-no-repeat bg-gray-500 bg-blend-multiply h-[100vh] mt-16"
                     style="background-image: url('{{ asset('storage/image/home_image/'.$head->image_path) }}');">
                     <div
                         class="flex flex-col justify-center items-center h-full text-center px-4 mx-auto max-w-screen-xl py-24 lg:py-56">
@@ -25,7 +25,7 @@
                             class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
                             {{ $head->title }}
                         </h1>
-                        <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
+                        <p class="mb-8 text-xl font-normal text-gray-200 lg:text-2xl sm:px-16 lg:px-48">
                             {{ $head->subtitle }}
                         </p>
                         <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
@@ -52,7 +52,7 @@
             <!-- Grid Section -->
             <div class="mx-auto max-w-2xl text-center mb-5 p-10">
                 <h2 class="text-3xl font-bold tracking-tight text-gray-900 ">Introducing Our Product's</h2>
-                <p class="mt-2 text-lg leading-8 text-gray-600">check our signature product's</p>
+                <p class="mt-2 text-xl leading-8 text-gray-600">check our signature product's</p>
             </div>
 
             <section
@@ -79,21 +79,31 @@
 
 
 
-
             <!-- Quick Access Section -->
             <section>
-                <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl mt-20">
+                
+                <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl ">
+                    <br><br>
+                <hr>
                     <div class="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-3">
                         @foreach ($quickaccess as $qa)
                             <div class="p-6">
-                                <img class="object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl"
-                                    src=" {{ asset('storage/image/home_image/'.$qa->image_path) }} " alt="blog">
-                                <h1
-                                    class="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl hover:underline">
-                                    {{ $qa->title }}</h1>
-                                <p class="mx-auto text-base leading-relaxed text-gray-500">
-                                    {{ Str::limit($qa->detail, '150') }}</p>
+                                <!-- Gambar akan lebih besar di layar laptop dengan lg:h-64 -->
+                                <img class="object-cover object-center w-full mb-8 lg:h-64 md:h-48 h-36 rounded-xl"
+                                    src="{{ asset('storage/image/home_image/'.$qa->image_path) }}" alt="blog">
+                                
+                                <!-- Heading lebih besar di layar laptop dengan lg:text-4xl -->
+                                <h1 class="mx-auto mb-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-4xl md:text-3xl hover:underline">
+                                    {{ $qa->title }}
+                                </h1>
+            
+                                <!-- Teks paragraf lebih besar di layar laptop -->
+                                <p class="mx-auto text-base md:text-md lg:text-lg leading-relaxed text-gray-500">
+                                    {{ Str::limit($qa->detail, '150') }}
+                                </p>
+            
                                 <div class="mt-4">
+                                    <!-- Tombol "Read More" tetap berukuran sama, tapi dapat disesuaikan jika diperlukan -->
                                     <a href="/{{$qa->slug}}"
                                         class="inline-flex items-center mt-4 font-semibold text-lime-600 lg:mb-0 hover:text-lime-700 hover:underline"
                                         title="read more"> Read More » </a>
@@ -101,8 +111,12 @@
                             </div>
                         @endforeach
                     </div>
+                    <hr>
+                    <br><br>
                 </div>
+
             </section>
+            
 
             <!-- News Section -->
             <div class="bg-white">

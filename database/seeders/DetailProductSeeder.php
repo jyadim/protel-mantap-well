@@ -22,6 +22,7 @@ class DetailProductSeeder extends Seeder
                 [
                     'title' => 'Crossflow Turbine',
                     'slug' => 'crossflow-turbine',
+                    'home_slug' => 'crossflow-turbine',
                     'video' => 'mp4/crossflowturbine-wm.mp4',
                     'image1' => 'img/product/crossflow-wm.png',
                     'image2' => 'img/product/crossflow-wm.png',
@@ -107,6 +108,7 @@ class DetailProductSeeder extends Seeder
                 ],
                 [
                     'slug' => 'pelton-turbine',
+                    'home_slug' => 'pelton-turbine',
                     'title' => 'Pelton Turbine',
                     'video' => 'mp4/peltonturbine-wm.mp4',
                     'image1' => 'img/product/peltonturbine-wm.png',
@@ -148,6 +150,7 @@ class DetailProductSeeder extends Seeder
                 ],
                 [
                     'slug' => 'electronic-load-controller',
+                    'home_slug' => 'electronic-load-controller',
                     'title' => 'Electronic Load Controller',
                     'video' => '',
                     'image1' => 'img/product/elc-wm.png',
@@ -190,6 +193,7 @@ class DetailProductSeeder extends Seeder
                 ],
                 [
                     'slug' => 'mechanical-electrical',
+                    'home_slug' => 'mechanical-electrical',
                     'title' => 'Mechanical & Electrical',
                     'video' => '',
                     'image1' => 'img/source/product/mechanical/3.png',
@@ -232,6 +236,7 @@ class DetailProductSeeder extends Seeder
                 ],
                 [
                     'slug' => 'micro-hydro-trainer-simulator',
+                    'home_slug' => 'micro-hydro-trainer-simulator',
                     'title' => 'Micro Hydro Trainer Simulator',
                     'video' => '',
                     'image1' => 'img/product/trainer-remove.png',
@@ -278,6 +283,7 @@ class DetailProductSeeder extends Seeder
                 $product = DetailProducts::create([
                     'title' => $productData['title'],
                     'slug' => $productData['slug'],
+                    'home_slug' => $productData['home_slug'],
                     'video' => $productData['video'],
                     'image1' => $productData['image1'],
                     'image2' => $productData['image2'],

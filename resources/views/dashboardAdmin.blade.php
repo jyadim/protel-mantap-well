@@ -133,32 +133,7 @@
             @endforeach
 
 
-            <!-- Create new product form -->
-            <div class="w-72 bg-white shadow-md rounded-xl hover:shadow-xl items-center">
-                <form action="{{ route('homeproduct.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <label for="new-image-upload" class="cursor-pointer">
-                        <!-- Tambahkan ID pada gambar preview -->
-                        <img src="{{ asset('images/default-image.png') }}" alt="Product"
-                            class="h-80 w-72 object-cover rounded-t-xl cursor-pointer" id="card-preview-create" />
-                    </label>
-                    <input type="file" name="image_path" class="hidden" id="new-image-upload"
-                        onchange="previewCardPhoto(event, 'card-preview-create')">
-                    <div class="px-4 py-3 w-72">
-                        <select name="author_name"
-                            class="text-gray-400 mr-3 uppercase text-xs w-full border border-gray-300 rounded px-2 py-1 mb-2">
-                            @foreach ($users as $user)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endforeach
-                        </select>
-                        <input type="text" name="name" placeholder="Product Name"
-                            class="text-lg font-bold text-black truncate block capitalize w-full border border-gray-300 rounded px-2 py-1 mb-2">
-                        <button type="submit" class="bg-green-600 text-white py-2 px-4 rounded">Create New
-                            Product</button>
-                    </div>
-                </form>
-            </div>
-
+          
 
             </section>
             <div class="max-w-2xl pt-14 mb-10">

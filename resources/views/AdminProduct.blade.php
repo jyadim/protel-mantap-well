@@ -60,8 +60,31 @@
                             </div>
                         </form>
                     </div>
+                    
                     </div>
                     @endforeach
+                    <div class="w-72 bg-white shadow-md rounded-xl hover:shadow-xl items-center">
+                        <form action="{{ route('homeproduct.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="image_path" class="hidden" id="image-upload-{{ $prod->slug }}"
+                                onchange="previewCardPhoto(event, 'card-preview-{{ $prod->slug }}')" accept=".png, .jpg, .jpeg" />
+                            <label for="image-upload-{{ $prod->slug }}">
+                                <img src="{{ asset('storage/image/product/' . $prod->image_path) }}" alt="Product"
+                                    class="h-80 w-96 object-cover rounded-t-xl cursor-pointer"
+                                    id="card-preview-{{ $prod->slug }}" />
+                            </label>
+                            <div class="px-4 py-3">
+                                <input type="text" name="title" value="{{ $prod->title }}"
+                                    class="text-lg font-bold text-black truncate block capitalize w-full border border-gray-300 rounded px-2 py-1 mb-2"
+                                    placeholder="Update Title">
+                                <textarea name="desc" placeholder="Update Description"
+                                    class="text-gray-600 block w-full border border-gray-300 rounded px-2 py-1 mb-2 h-40">{{ $prod->desc }}</textarea>
+                                <div class="flex justify-between items-center">
+                                    <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Update</button>
+                                </div>
+                            
+                        </form>
+                    </div>
                 </section>
             </section>
             

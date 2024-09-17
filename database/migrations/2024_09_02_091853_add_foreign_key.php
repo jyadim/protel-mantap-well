@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::table('detail_products', function (Blueprint $table) {
             $table->string('home_slug');
-            $table->string('prod_slug');
         });
     }
 
@@ -24,7 +23,6 @@ return new class extends Migration
     {
         Schema::table('detail_products', function (Blueprint $table) {
             $table->drop('home_slug');
-            $table->drop('prod_slug');
         });
     }
 };

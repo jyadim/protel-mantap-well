@@ -13,13 +13,17 @@ use Illuminate\Queue\SerializesModels;
 class ContactUs extends Mailable
 {
     use Queueable, SerializesModels;
+
     public $data;
+
     /**
      * Create a new message instance.
+     *
+     * @param array $data
      */
     public function __construct($data)
     {
-        $this->data= $data;
+        $this->data = $data;
     }
 
     /**
@@ -28,8 +32,8 @@ class ContactUs extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: new Address($this->data['email'], $this->data['name']), // Menggunakan input email dan name
             subject: 'Contact Us',
-            from: new Address('yourmail@gmail.com', 'Acme Media'),
         );
     }
 
@@ -39,7 +43,7 @@ class ContactUs extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'emails.contact',
+            markdown: 'emails.contact', // Menggunakan Markdown atau Blade view
         );
     }
 

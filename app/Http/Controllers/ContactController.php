@@ -38,7 +38,7 @@ class ContactController extends Controller
      ];
  
      try {
-         Mail::to('ahmadrakandzaky.a@gmail.com')->send(new ContactUs($data));
+         Mail::to('admin@pme-bandung.com')->send(new ContactUs($data));
      } catch (\Exception $e) {
          return redirect()->back()->with('error', 'Error sending email: ' . $e->getMessage());
      }

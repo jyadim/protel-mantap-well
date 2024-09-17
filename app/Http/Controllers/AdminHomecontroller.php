@@ -81,69 +81,6 @@ class AdminHomeController extends Controller
           return redirect()->route('admin.dashboard');
       }
   }
-
-
-  public function prdcreate()
-  {
-    return view('product.create');
-  }
-
-  public function prdstore(Request $request)
-{
-    try {
-        // Validate request data
-        $validated = $request->validate([
-            'author_name' => 'required|exists:users,id', // Validate the author name is a string
-            'name' => 'required|string|max:255',
-            'image_path' => 'nullable|image',
-        ]);
-        Log::info('Validation successful', ['validated' => $validated]);
-
-        $product = new HomeProduct();
-
-        // Handle image upload
-        if ($request->hasFile('image_path')) {
-            $file = $request->file('image_path');
-            $file_name = time().'_'.$file->getClientOriginalName();
-            $filePath = 'image/home_image/' . $file_name;
-
-            // Save the new image file
-            Storage::disk('public')->put($filePath, file_get_contents($file));
-            Log::info('File uploaded', ['file_name' => $file_name, 'file_path' => $filePath]);
-
-            // Delete the old image if it exists
-            if (!is_null($product->image_path)) {
-                Storage::disk('public')->delete('image/home_image/' . $product->image_path);
-                Log::info('Old image deleted', ['old_image' => $product->image_path]);
-            }
-
-            // Update the image path
-            $product->image_path = $file_name;
-        }
-
-        // Find the user
-        
-
-        // Update the HomeProduct's fields
-        $product->name = $validated['name'];
-        $product->image_name = $validated['name'];
-        $product->user_id = $validated['author_name']; // Correctly set user_id
-        $product->slug = Str::slug($validated['name']);
-        Log::info('HomeProduct fields set', ['product' => $product]);
-
-        // Save the HomeProduct
-        $product->save();
-        Log::info('HomeProduct saved', ['product' => $product]);
-
-        Session::flash('success', 'Product created successfully.');
-        return redirect()->route('admin.dashboard');
-    } catch (\Exception $e) {
-        Log::error('Error creating product: ' . $e->getMessage());
-        return redirect()->route('admin.dashboard')->with('error', 'An error occurred while creating the product. ' . $e->getMessage());
-    }
-}
-
-
   
 
   public function prdupdate(Request $request, $slug)

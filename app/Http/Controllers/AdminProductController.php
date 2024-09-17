@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\DetailProducts;
+use App\Models\HomeProduct;
 use App\Models\Products;
 use App\Models\Project;
 use Demo\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -23,58 +25,67 @@ class AdminProductController extends Controller
 
     }
     public function productstore(Request $request)
-    {
-        try {
-            // Validate request data
-            $validated = $request->validate([
-                'name' => 'required|string|max:255',
-                'image_path' => 'nullable|image',
-            ]);
-            Log::info('Validation successful', ['validated' => $validated]);
-    
-            $product = new Products();
-    
-            // Handle image upload
-            if ($request->hasFile('image_path')) {
-                $file = $request->file('image_path');
-                $file_name = time().'_'.$file->getClientOriginalName();
-                $filePath = 'image/product/' . $file_name;
-    
-                // Save the new image file
-                Storage::disk('public')->put($filePath, file_get_contents($file));
-                Log::info('File uploaded', ['file_name' => $file_name, 'file_path' => $filePath]);
-    
-                // Delete the old image if it exists
-                if (!is_null($product->image_path)) {
-                    Storage::disk('public')->delete('image/product/' . $product->image_path);
-                    Log::info('Old image deleted', ['old_image' => $product->image_path]);
-                }
-    
-                // Update the image path
-                $product->image_path = $file_name;
+{
+    try {
+        // Validate request data
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:1000', // Add description validation
+            'image_path' => 'nullable|image',
+        ]);
+        Log::info('Validation successful', ['validated' => $validated]);
+
+        $product = new Products();
+
+        // Handle image upload
+        if ($request->hasFile('image_path')) {
+            $file = $request->file('image_path');
+            $file_name = time().'_'.$file->getClientOriginalName();
+            $filePath = 'image/product/' . $file_name;
+
+            // Save the new image file
+            Storage::disk('public')->put($filePath, file_get_contents($file));
+            Log::info('File uploaded', ['file_name' => $file_name, 'file_path' => $filePath]);
+
+            // Delete the old image if it exists
+            if (!is_null($product->image_path)) {
+                Storage::disk('public')->delete('image/product/' . $product->image_path);
+                Log::info('Old image deleted', ['old_image' => $product->image_path]);
             }
-    
-            // Find the user
-            
-    
-            // Update the HomeProduct's fields
-            $product->name = $validated['name'];
-            $product->image_name = $validated['name'];
-            $product->user_id = $validated['author_name']; // Correctly set user_id
-            $product->slug = Str::slug($validated['name']);
-            Log::info('HomeProduct fields set', ['product' => $product]);
-    
-            // Save the HomeProduct
-            $product->save();
-            Log::info('HomeProduct saved', ['product' => $product]);
-    
-            Session::flash('success', 'Product created successfully.');
-            return redirect()->route('admin.dashboard');
-        } catch (\Exception $e) {
-            Log::error('Error creating product: ' . $e->getMessage());
-            return redirect()->route('admin.dashboard')->with('error', 'An error occurred while creating the product. ' . $e->getMessage());
+
+            // Update the image path
+            $product->image_path = $file_name;
         }
+
+        // Update product fields
+        $product->name = $validated['name'];
+        $product->description = $validated['description']; // Store description
+        $product->slug = Str::slug($validated['name']);
+        $product->user_id = Auth::id(); // Automatically set the current user
+        Log::info('Product fields set', ['product' => $product]);
+
+        // Save the product
+        $product->save();
+        Log::info('Product saved', ['product' => $product]);
+
+        // Add product to homepage with user info
+        $homeProduct = new HomeProduct();
+        $homeProduct->product_id = $product->id; // Link the product
+        $homeProduct->user_id = Auth::id(); // Set the user who added the product
+        $homeProduct->title = $product->name; // Set the title
+        $homeProduct->image_path = $product->image_path; // Set the image
+        $homeProduct->save();
+        Log::info('Product added to homepage', ['home_product' => $homeProduct]);
+
+        // Redirect to product details form
+        Session::flash('success', 'Product created successfully.');
+        return redirect()->route('admin.product.details', ['product' => $product->id]);
+    } catch (\Exception $e) {
+        Log::error('Error creating product: ' . $e->getMessage());
+        return redirect()->route('admin.dashboard')->with('error', 'An error occurred while creating the product. ' . $e->getMessage());
     }
+}
+
     
     public function productupdate(Request $request, $slug)
     {

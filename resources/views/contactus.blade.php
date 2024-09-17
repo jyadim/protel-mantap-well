@@ -182,9 +182,11 @@
                                                 <p class="text-sm text-neutral-500">
                                                     {{ $contact_info->email }}
                                                 </p>
+                                                <a href="https://wa.link/4q30ko">
                                                 <p class="text-sm text-neutral-500">
                                                     {{ $contact_info->mobile }}
                                                 </p>
+                                            </a>
                                             </div>
                                         </div>
                                     </div>
@@ -205,9 +207,11 @@
                                                 <p class="mb-2 font-bold ">
                                                     Address
                                                 </p>
+                                                <a href="https://maps.app.goo.gl/FYPZw3L8pCD7nd6c7">
                                                 <p class="text-sm text-neutral-500">
                                                     {{ $contact_info->address }} <br>
                                                 </p>
+                                            </a>
                                             </div>
                                         </div>
                                     </div>
@@ -252,8 +256,10 @@
                                             </div>
                                             <div class="ml-6 grow">
                                                 <p class="mb-2 font-bold ">Mobile</p>
-                                                <p class="text-neutral-500"> {{ $contact_info['mobile'] }}
-                                                </p>
+                                                <a href="https://wa.link/4q30ko">
+                                                    <p class="text-neutral-500"> {{ $contact_info['mobile'] }}
+                                                    </p>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

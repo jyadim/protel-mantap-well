@@ -58,49 +58,52 @@
                 <h2 class="text-4xl tracking-tight font-bold text-primary-800">Highlighted Features of {{ $detailProducts->title }}</h2>
             </div>
 
-            <div class="container mx-auto">
+            <div class="container mx-auto px-4 lg:px-8">
 
                 <!-- First Section: 4 Description Points and 1 Picture -->
-                <div class="flex flex-col md:flex-row mt-8">
-                    <div class="mr-0 md:mr-4 lg:w-[28rem] lg:h-[20rem]">
+                <div class="flex flex-col md:flex-row mt-8 lg:mt-12">
+                    <!-- Picture -->
+                    <div class="mb-6 md:mb-0 md:mr-4 lg:w-[32rem]">
                         <img class="w-full h-full rounded-xl" src="{{ asset('storage/image/product/'.$detailProducts->image1) }}" alt="can_help_banner">
                     </div>
-                    <div class="flex-1 flex flex-col sm:flex-row flex-wrap">
+                    
+                    <!-- Descriptions -->
+                    <div class="flex-1 flex flex-col sm:flex-row flex-wrap lg:ml-4">
                         @foreach ($detailProducts->descriptionPoints->take(4) as $det)
-                            <div class="w-full sm:w-1/2 mb-3 px-1">
-                                <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-l-0 rounded-br-xl">
-                                    <h3 class="text-xl font-bold text-md mb-3">{{ $det->title }}:</h3>
-                                    <p class="text-xs">{{ $det->desc }}</p>
+                            <div class="w-full sm:w-1/2 mb-4 px-2 lg:px-4">
+                                <div class="h-full py-3 px-4 border border-green-500 border-t-0 border-l-0 rounded-br-xl">
+                                    <h3 class="text-lg lg:text-xl font-bold mb-3">{{ $det->title }}:</h3>
+                                    <p class="text-sm lg:text-lg">{{ $det->desc }}</p>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-            
-                    <!-- Picture -->
-                    
                 </div>
+                
             
                 <!-- Second Section: Remaining Description Points and 1 Picture -->
-                <div class="flex flex-col md:flex-row mt-20">
+                <div class="flex flex-col md:flex-row mt-16 lg:mt-20">
                     <!-- Descriptions -->
-                    <div class="flex-1 flex flex-col sm:flex-row flex-wrap">
+                    <div class="flex-1 flex flex-col sm:flex-row flex-wrap lg:mr-4">
                         @foreach ($detailProducts->descriptionPoints->skip(4) as $det)
-                            <div class="w-full sm:w-1/2 mb-3 px-1">
-                                <div class="h-full py-2 px-3 border border-green-500 border-t-0 border-l-0 rounded-br-xl">
-                                    <h3 class="text-xl font-bold text-md mb-3">{{ $det->title }}:</h3>
-                                    <p class="text-xs">{{ $det->desc }}</p>
+                            <div class="w-full sm:w-1/2 mb-4 px-2 lg:px-4">
+                                <div class="h-full py-3 px-4 border border-green-500 border-t-0 border-r-0 rounded-bl-xl">
+                                    <h3 class="text-lg lg:text-xl font-bold mb-3">{{ $det->title }}:</h3>
+                                    <p class="text-sm lg:text-lg">{{ $det->desc }}</p>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-            
+                
                     <!-- Picture -->
-                    <div class="mr-0 md:ml-4 lg:w-[28rem] lg:h-[20rem]">
+                    <div class="mt-6 md:mt-0 lg:ml-4 lg:w-[32rem]">
                         <img class="w-full h-full rounded-xl" src="{{ asset('storage/image/product/'.$detailProducts->image2) }}" alt="can_help_banner">
                     </div>
                 </div>
+                
             
             </div>
+            
             
             <hr class="mt-24">
         </div>
