@@ -24,7 +24,17 @@
             <x-sidebar :product="$product" :ref="$ref"></x-sidebar>
             <section class="container mx-auto p-10 md:py-12 px-0 md:p-8 md:px-0">
                 <div class="w-full mb-6 lg:mb-0">
-                    <h2 class="text-3xl font-bold mb-6">Edit Product's Home Section</h2>
+                    <h2 class="text-3xl font-bold mb-6">Edit Product's Section</h2>
+                    @if (Session::has('success'))
+                    <div class="bg-lime-700 text-white p-3 rounded mt-4 mb-2">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
+                @if (Session::has('error'))
+                    <div class="bg-red-500 text-white p-3 rounded mt-4 mb-2">
+                        {{ Session::get('error') }}
+                    </div>
+                @endif
                 </div>
                 <section class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 items-start mt-10">
                     @foreach ($product as $prod)

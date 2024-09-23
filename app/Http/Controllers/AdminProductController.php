@@ -77,9 +77,28 @@ class AdminProductController extends Controller
             $homeProduct->slug = $product->slug; // use the product slug instead of name
             $homeProduct->image_name = $product->title; // could be title or something more appropriate
             $homeProduct->image_path = $product->image_path;
-            $homeProduct->save();
             Log::info('Product added to homepage', ['home_product' => $homeProduct]);
+
+            if ($request->hasFile('image_path')) {
+                $file = $request->file('image_path');
+                $file_name = time() . '_' . $file->getClientOriginalName();
+                $filePath = 'image/home_image/' . $file_name;
     
+                // Save the new image file
+                Storage::disk('public')->put($filePath, file_get_contents($file));
+                Log::info('File uploaded', ['file_name' => $file_name, 'file_path' => $filePath]);
+    
+                // Delete old image if it exists
+                if (!is_null($product->image_path)) {
+                    Storage::disk('public')->delete('image/home_image/' . $product->image_path);
+                    Log::info('Old image deleted', ['old_image' => $product->image_path]);
+                }
+    
+                // Update image path
+                $homeProduct->image_path = $file_name;
+            }
+            $homeProduct->save();
+
             $detailProduct = new DetailProducts();
             $detailProduct->title = $product->title;
             $detailProduct->slug = $product->slug;

@@ -157,7 +157,7 @@
                 </ul>
             </div>
             <p class="my-4 text-xs text-center text-gray-400">
-                <span>Copyright © SukaSusuSapi 2024</span>
+                <span>Copyright © PME Bandung 2024</span>
             </p>
     </div>
     </nav>
