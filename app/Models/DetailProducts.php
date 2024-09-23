@@ -20,4 +20,8 @@ class DetailProducts extends Model
     {
         return $this->hasMany(productgallery::class, 'products_id');
     }
+    public function pdfs()
+    {
+        return $this->hasMany(PDF::class, 'products_id');
+    }
 }

@@ -43,8 +43,8 @@
                     @endif
 
                     @foreach ($references as $reference)
-                        @if ($reference['title'] || $reference['description'])
-                            <!-- Update Form for Reference -->
+                    @if (!$reference['title'] || $reference['description'] && $reference['title'] !=='Partners')
+                    <!-- Update Form for Reference -->
                             <form method="POST" action="{{ route('reference.update', $reference['id']) }}" enctype="multipart/form-data" class="space-y-6">
                                 @csrf
                                 @method('PUT')

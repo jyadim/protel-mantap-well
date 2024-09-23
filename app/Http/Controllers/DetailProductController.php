@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DetailProducts;
+use App\Models\PDF;
+use Illuminate\Support\Facades\Storage;
 
 class DetailProductController extends Controller
 {
@@ -81,4 +83,31 @@ class DetailProductController extends Controller
 
         return redirect()->route('detail_products.index')->with('success', 'Detail Product deleted successfully.');
     }
+    public function pdfdownload($slug)
+    {
+        // Find the product by slug
+        $product = DetailProducts::where('slug', $slug)->firstOrFail();
+    
+        // Find the associated PDF using the product's ID
+        $pdf = PDF::where('products_id', $product->id)->first();
+        if (!$pdf) {
+            return redirect()->back()->with('error', 'We\'re sorry, brochure not available yet.');
+        }
+    
+        // Get the file name stored in the database
+        $fileName = $pdf->file_path; // This should just be the file name
+    
+        // Construct the full file path relative to 'public/storage/pdfs'
+        $filePath = "pdfs/{$fileName}";
+    
+        // Check if the file exists
+        if (!Storage::disk('public')->exists($filePath)) {
+            return redirect()->back()->with('error', 'We\'re sorry, brochure not available yet.');
+        }
+    
+        // Return the file as a response for download
+        return response()->download(public_path("storage/{$filePath}"));
+    }
+    
+
 }

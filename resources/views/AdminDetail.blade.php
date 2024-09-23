@@ -130,17 +130,35 @@
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                                @foreach ($detailProduct->descriptionPoints as $index => $det)
-                                    <div class="form-group p-4 border border-gray-300 rounded-lg shadow-sm">
-                                        <label for="description{{ $index }}"
-                                            class="block text-lg font-semibold text-gray-800 mb-2">
-                                            Description {{ $index + 1 }}
-                                        </label>
-                                        <textarea id="description{{ $index }}" name="descriptions[]" rows="6"
-                                            class="form-input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            placeholder="Enter description here">{{ $det->desc }}</textarea>
-                                    </div>
-                                @endforeach
+                                @php
+                                    // Check if description points exist
+                                    $descriptionPoints = $detailProduct->descriptionPoints->isNotEmpty()
+                                        ? $detailProduct->descriptionPoints
+                                        : null;
+                                @endphp
+                            
+                                @if ($descriptionPoints)
+                                    @foreach ($descriptionPoints as $index => $det)
+                                        <div class="form-group p-4 border border-gray-300 rounded-lg shadow-sm">
+                                            <label for="description{{ $index }}"
+                                                class="block text-lg font-semibold text-gray-800 mb-2">
+                                                Description {{ $index + 1 }}
+                                            </label>
+                                            <textarea id="title{{ $index }}" name="titledesc[]" rows="1"
+                                                class="form-input w-full text-lg font-bold p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                placeholder="Enter description here">{{ $det->title }}</textarea>
+                                            <textarea id="description{{ $index }}" name="descriptions[]" rows="6"
+                                                class="form-input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                placeholder="Enter description here">{{ $det->desc }}</textarea>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <!-- You can add your create logic here if no description points exist -->
+                                    <p class="text-gray-500">No description points available. Please create one.</p>
+                                @endif
+                            </div>
+                            
+                            
                             </div>
 
 
@@ -151,7 +169,96 @@
                             </div>
 
                             </form>
+<!-- resources/views/admin/admindetail.blade.php -->
+<div class="container mx-auto p-6">
+    <!-- Form yang lain di halaman ini -->
 
+    <h2 class="text-2xl font-bold mb-4">Manage PDFs</h2>
+
+    @if(isset($editingPDF)) 
+    <!-- Form Edit PDF jika sedang mengedit PDF -->
+    <form action="{{ route('pdf.update', [$detailProduct->slug, $editingPDF->id]) }}" method="POST" enctype="multipart/form-data" class="mb-6">
+        @csrf
+        @method('PUT')
+        <div class="mb-4">
+            <label class="block text-gray-700">Update PDF File:</label>
+            <input type="file" name="pdf" accept="application/pdf" class="w-full px-4 py-2 border rounded-lg">
+            <small class="text-gray-500">Current File: {{ $editingPDF->file_path }}</small>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700">PDF Title:</label>
+            <input type="text" name="title" class="w-full px-4 py-2 border rounded-lg" value="{{ $editingPDF->title }}" required>
+        </div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Update PDF</button>
+    </form>
+    @else 
+    <!-- Form Tambah PDF jika tidak mengedit -->
+    <form action="{{ route('pdf.store', $detailProduct->slug) }}" method="POST" enctype="multipart/form-data" class="mb-6">
+        @csrf
+        <div class="mb-4">
+            <label class="block text-gray-700">Upload PDF:</label>
+            <input type="file" name="pdf" accept="application/pdf" class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700">PDF Title:</label>
+            <input type="text" name="title" class="w-full px-4 py-2 border rounded-lg" placeholder="PDF Title" required>
+        </div>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Upload PDF</button>
+    </form>
+    @endif
+
+    <!-- Tabel PDF yang sudah di-upload -->
+
+
+    <!-- Form Edit PDF yang akan diisi dengan data saat tombol edit diklik -->
+    <div id="edit-pdf-form" style="display: none;">
+        <h3 class="text-xl font-semibold mb-4">Edit PDF</h3>
+        <form id="editPDFForm" action="" method="POST" enctype="multipart/form-data" class="mb-6">
+            @csrf
+            @method('PUT')
+            <div class="mb-4">
+                <label class="block text-gray-700">Update PDF File:</label>
+                <input type="file" name="pdf" accept="application/pdf" class="w-full px-4 py-2 border rounded-lg">
+                <small class="text-gray-500" id="current-file"></small>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">PDF Title:</label>
+                <input type="text" id="pdf-title" name="title" class="w-full px-4 py-2 border rounded-lg" required>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Update PDF</button>
+        </form>
+    </div>
+
+    <!-- Tabel PDF yang sudah di-upload -->
+    <h3 class="text-xl font-semibold mb-4">Uploaded PDFs</h3>
+    <table class="w-full table-auto bg-white shadow-lg rounded-lg">
+        <thead>
+            <tr>
+                <th class="px-4 py-2">Title</th>
+                <th class="px-4 py-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($detailProduct->pdfs as $pdf)
+            <tr>
+                <td class="border px-4 py-2">{{ $pdf->title }}</td>
+                <td class="border px-4 py-2">
+                    <!-- Tombol untuk Edit PDF -->
+                    <button type="button" class="bg-yellow-500 text-white px-4 py-2 rounded-lg ml-2" onclick="editPDF('{{ $pdf->id }}', '{{ $detailProduct->slug }}')">Edit</button>
+
+                    <!-- Delete PDF -->
+                    <form action="{{ route('pdf.destroy', [$detailProduct->slug, $pdf->id]) }}" method="POST" class="inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+                            </div>
                             <section class="bg-white">
                                 <div class="w-full mx-auto max-w-4xl flex flex-col justify-center relative p-4 sm:p-6">
                                     <div
@@ -250,6 +357,21 @@
     </div>
 
     <script>
+         function editPDF(pdfId, productSlug) {
+        // Kirim request AJAX untuk mengambil data PDF
+        fetch(`/admin/products/${productSlug}/pdf/${pdfId}/edit`)
+            .then(response => response.json())
+            .then(data => {
+                // Isi form dengan data yang diambil
+                document.getElementById('pdf-title').value = data.title;
+                document.getElementById('current-file').innerText = `Current File: ${data.file_path}`;
+                document.getElementById('editPDFForm').action = `/admin/products/${productSlug}/pdf/${pdfId}`;
+                
+                // Tampilkan form edit
+                document.getElementById('edit-pdf-form').style.display = 'block';
+            })
+            .catch(error => console.error('Error fetching PDF data:', error));
+    }
         function updateVideoPreview() {
             const videoLink = document.getElementById('video').value;
             const videoPreview = document.getElementById('videoPreview');

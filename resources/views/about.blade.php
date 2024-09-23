@@ -135,83 +135,79 @@
         <x-navbar></x-navbar>
         <main>
             @foreach ($about as $abt)
-                <div class="sm:flex items-center max-w-screen-2xl mt-20 mb-10 lg:mb-0">
-                    <div class="flex justify-center sm:w-4/5 px-11">
-                        <div class="flex image object-center justify-center text-center">
-                            <img class="rounded-3xl" src="{{ asset('storage/image/about/'.$abt->image_path) }}">
-                        </div>
-                    </div>
-                    <div class="sm:w-3/4 p-12">
-                        <div class="text">
-                            <span class="text-gray-500 border-b-2 border-lime-600 uppercase">About us</span>
-                            <h2 class="my-4 font-bold text-3xl  sm:text-4xl ">About <span class="text-lime-600">Our
-                                    Company</span>
-                            </h2>
-                            <p class="text-gray-700 text-justify">
-                                {{ $abt->description1 }}
-                            </p>
-                            <p class="text-gray-700 text-justify">
-                                <br><br>
-                                {{ $abt->description2}}
-                            </p>
-                        </div>
+            <div class="sm:flex flex-col-reverse sm:flex-row items-center max-w-screen-2xl mt-16 mb-12 sm:mb-16 lg:mb-20">
+                <!-- Image Section -->
+                <div class="w-full sm:w-4/5 flex justify-center px-6 sm:px-11 mb-8 sm:mb-0">
+                    <div class="flex image object-center justify-center text-center">
+                        <img class="rounded-3xl w-full sm:w-auto" src="{{ asset('storage/image/about/'.$abt->image_path) }}">
                     </div>
                 </div>
+            
+                <!-- Text Section -->
+                <div class="w-full sm:w-3/4 p-8 sm:p-14">
+                    <div class="text">
+                        <!-- "About Us" Tag -->
+                        <span class="text-gray-500 border-b-2 border-lime-600 uppercase text-sm sm:text-base inline-block">About us</span>
+                        <!-- Header -->
+                        <h2 class="my-4 font-bold text-2xl sm:text-3xl lg:text-4xl">
+                            About <span class="text-lime-600">Our Company</span>
+                        </h2>
+                        <!-- Description Paragraph 1 -->
+                        <p class="text-gray-700 text-justify text-xl leading-relaxed sm:text-lg">
+                            {{ $abt->description1 }}
+                        </p>
+                        <!-- Description Paragraph 2 -->
+                        <p class="text-gray-700 text-justify text-xl leading-relaxed sm:text-lg mt-6">
+                            {{ $abt->description2 }}
+                        </p>
+                    </div>
+                </div>
+            </div>
             @endforeach
-
+            
 
 
             <link rel="stylesheet" href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css">
             <!-- Team Section -->
-            <div class="flex items-center justify-center min-h-screen bg-white ">
-                <div class="flex flex-col">
-                    <div class="flex flex-col mt-8">
-                        <!-- Meet the Team -->
-                        <div class="container max-w-7xl px-4">
-                            <!-- Section Header -->
-                            <div class="flex flex-wrap justify-center text-center mb-24">
-                                <div class="w-full lg:w-6/12 px-4">
-                                    <!-- Header -->
-                                    <h1 class="text-gray-900 text-4xl font-bold mb-8">
-                                        Meet the Team
+            <div class="flex items-center justify-center  bg-white">
+                <div class="flex flex-col w-full max-w-7xl">
+                    <!-- Meet the Team -->
+                    <div class="text-center mb-8">
+                        <!-- Header -->
+                        <h1 class="text-gray-900 text-3xl md:text-4xl font-bold mb-4 md:mb-8">
+                            Meet the Team
+                        </h1>
+            
+                        <!-- Description -->
+                        <p class="text-gray-700 text-sm md:text-lg font-light">
+                            With over 100 years of combined experience, we've got a well-seasoned team at
+                            the helm.
+                        </p>
+                    </div>
+            
+                    <!-- Team Members -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 p-4 md:p-6">
+                        @foreach ($team as $team)
+                            <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+                                <!-- Avatar -->
+                                <div class="h-48 md:h-64 w-full">
+                                    <img class="w-full h-full object-cover"
+                                         src="{{ asset('storage/image/about/'.$team->image_path) }}" alt="{{$team->team_name}}">
+                                </div>
+            
+                                <!-- Details -->
+                                <div class="p-4 md:p-6 text-center">
+                                    <!-- Name -->
+                                    <h1 class="text-gray-900 text-lg md:text-xl font-bold mb-1 md:mb-2">
+                                        {{$team->team_name}}
                                     </h1>
-
-                                    <!-- Description -->
-                                    <p class="text-gray-700 text-lg font-light">
-                                        With over 100 years of combined experience, we've got a well-seasoned team at
-                                        the helm.
-                                    </p>
                                 </div>
                             </div>
-
-
-                            <!-- Team Members -->
-                            <div class="flex flex-wrap">
-                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 p-6">
-                                    @foreach ($team as $team)
-                                        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-                                            <!-- Avatar -->
-                                            <div class="h-64 w-full">
-                                                <img class="w-full h-full object-cover"
-                                                     src="{{ asset('storage/image/about/'.$team->image_path) }}" alt="{{$team->team_name}}">
-                                            </div>
-                                
-                                            <!-- Details -->
-                                            <div class="p-6 text-center">
-                                                <!-- Name -->
-                                                <h1 class="text-gray-900 text-xl font-bold mb-2">
-                                                    {{$team->team_name}}
-                                                </h1>
-                                                <!-- Optional: Add more information here like position or social media links -->
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                                
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
+            </div>
+            
             </div>
         </main>
         <x-footer></x-footer>

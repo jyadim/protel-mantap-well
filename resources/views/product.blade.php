@@ -14,27 +14,36 @@
     <div class="min-h-full">
         <x-navbar></x-navbar>
 
-     <section class="container mx-auto p-10 md:py-12 px-0 md:p-8 md:px-0 mt-16">
-    <div class="w-full mb-6 lg:mb-0">
-        <h1 class="sm:text-4xl text-5xl xl:text-6xl font-medium title-font mb-2 text-gray-900">
+    <section class="container mx-auto p-5 md:py-12 px-0 md:p-8 md:px-0 mt-10 md:mt-16">
+    <!-- Title Section -->
+    <div class="w-full mb-6 lg:mb-0 text-center">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-medium title-font mb-2 text-gray-900">
             Product Gallery
         </h1>
-        <div class="h-1 w-64 bg-lime-500 rounded"></div>
+        <div class="h-1 w-24 md:w-64 bg-lime-500 rounded mx-auto"></div>
     </div>
-    <section
-        class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 xl:gap-12 items-start mt-10">
+
+    <!-- Product Grid -->
+    <section class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 md:gap-8 xl:gap-10 items-start mt-8">
         @foreach ($product as $product)
         <section
-            class="p-5 py-10 bg-blue-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer xl:p-8 xl:py-12 w-[350px]">
-            <img class="mx-auto w-full xl:w-96" src="{{ asset('storage/image/product/'.$product->image_path) }}" alt="">
+            class="p-4 md:p-6 xl:p-8 py-8 bg-blue-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer w-full md:w-auto flex flex-col justify-between">
+            <!-- Product Image -->
+            <img class="mx-auto w-full md:w-80 xl:w-96 object-cover h-48 md:h-64" src="{{ asset('storage/image/product/'.$product->image_path) }}" alt="{{ $product->title }}">
 
-            <h1 class="text-3xl lg:text-4xl font-semibold my-5 ">{{ $product->title }}</h1>
-            <p class="mb-5 text-pretty text-lg xl:text-xl">{{ $product->desc }}</p>
-            <a class="p-2 px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600 xl:text-lg" href="/product/{{ $product->slug }}">Detail</a>
+            <!-- Product Title -->
+            <h1 class="text-2xl md:text-2xl lg:text-3xl font-semibold my-4">{{ $product->title }}</h1>
+
+            <!-- Product Description -->
+            <p class="mb-4 text-gray-700 text-base md:text-lg xl:text-xl h-30 overflow-hidden">{{ $product->desc }}</p>
+
+            <!-- Product Link -->
+            <a class="p-2 px-4 md:px-6 bg-blue-500 text-white rounded-md hover:bg-blue-600 xl:text-lg mt-auto" href="/product/{{ $product->slug }}">Detail</a>
         </section>
         @endforeach
     </section>
 </section>
+
 
 
         <x-footer></x-footer>

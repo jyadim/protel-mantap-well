@@ -14,7 +14,7 @@
     <x-navbar></x-navbar>
 
     @foreach ($references as $reference)
-    @if ($reference['title'] || $reference['description'])
+    @if (!$reference['title'] || $reference['description'] && $reference['title'] !=='Partners')
         <section class="text-gray-700 body-font border-t border-gray-200">
             <div class="container mx-auto px-6 lg:px-12 py-24 lg:py-32 flex flex-col md:flex-row items-center">
                 <div class="lg:max-w-lg lg:w-full md:w-1/2 w-full mb-10 md:mb-0">
@@ -38,7 +38,7 @@
                     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-full mb-6 md:mb-0">
                         <img alt="feature" class="object-cover object-center h-full w-full" src="{{ asset('storage/image/references/'.$reference['image']) }}">
                     </div>
-                    <div class="md:w-1/2 w-full lg:pl-16">
+                    <div class="lg:flex-grow md:w-1/2 lg:pl-20 flex flex-col md:items-start md:text-left items-center text-justify">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
                             @foreach ($reference['partners'] as $partner)
                                 <div class="flex flex-col items-center md:items-start">

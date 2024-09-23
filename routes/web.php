@@ -31,6 +31,8 @@ Route::prefix('/')->group(function () {
     Route::post('contact/send', [ContactController::class, 'sendContactForm'])->name('contact.send');
     Route::get('product/{slug}', [DetailProductController::class, 'index']);
     Route::get('gallery/{slug}', [DetailGalleryController::class, 'index']);
+    Route::get('product/pdf-download/{slug}', [DetailProductController::class, 'pdfdownload'])->name('pdf.download');
+
 });
 
 // Group routes under the 'admin' prefix
@@ -52,7 +54,6 @@ Route::prefix('admin')->group(function () {
         Route::match(['GET', 'PUT'], 'references', [AdminReferencesController::class, 'index'])->name('references.index');
 
         Route::get('producthome/create', [AdminHomeController::class, 'prdcreate'])->name('homeproduct.create');
-        Route::post('producthome', [AdminHomeController::class, 'prdstore'])->name('homeproduct.store');
         Route::get('producthome/{slug}', [AdminHomeController::class, 'show'])->name('homeproduct.show');
         Route::put('producthome/{slug}', [AdminHomeController::class, 'prdupdate'])->name('homeproduct.update');
         Route::delete('producthome/{slug}', [AdminHomeController::class, 'prddestroy'])->name('homeproduct.destroy');
@@ -76,15 +77,23 @@ Route::prefix('admin')->group(function () {
         Route::put('/contact/update/{id}', [AdminContactController::class, 'contactupdate'])->name('contact.update');
         Route::put('/product/update/{slug}', [AdminProductController::class, 'productupdate'])->name('product.update');
         Route::delete('/product/destroy/{slug}', [AdminProductController::class, 'productdestroy'])->name('product.destroy');
-        Route::get('/detailproduct/{slug}', [AdminDetailProductController::class, 'edit'])->name('detailproduct.edit');
+        Route::get('/detailproduct/edit/{slug}', [AdminDetailProductController::class, 'edit'])->name('detailproduct.edit');
+        Route::get('/detailproduct/create/{slug}', [AdminDetailProductController::class, 'createindex'])->name('detailproduct.createindex');
         Route::put('/detailproduct/update/{slug}', [AdminDetailProductController::class, 'detailupdate'])->name('detailproduct.update');
+        Route::post('/detailproduct/create/{slug}', [AdminDetailProductController::class, 'create'])->name('detailproduct.store');
+        Route::post('products/{slug}/pdf', [AdminDetailProductController::class, 'storePDF'])->name('pdf.store');
+        Route::get('products/{slug}/pdf/{id}/edit', [AdminDetailProductController::class, 'editPDF'])->name('pdf.edit');
+        Route::put('products/{slug}/pdf/{id}', [AdminDetailProductController::class, 'updatePDF'])->name('pdf.update');
+        Route::delete('products/{slug}/pdf/{id}', [AdminDetailProductController::class, 'destroyPDF'])->name('pdf.destroy');
         Route::delete('/detailproduct/destroy/{slug}', [AdminDetailProductController::class, 'detaildestroy'])->name('detailproduct.destroy');
         Route::post('/productgallery/store/{products_id}', [AdminDetailProductController::class, 'store'])->name('productgallery.store');
         Route::put('/productgallery/update/{id}', [AdminDetailProductController::class, 'update'])->name('productgallery.update');
         Route::delete('/productgallery/destroy/{id}', [AdminDetailProductController::class, 'destroy'])->name('productgallery.destroy');
         Route::put('/reference/{id}', [AdminReferencesController::class, 'update'])->name('reference.update');
         Route::put('/reference/{id}/partners', [AdminReferencesController::class, 'updatePartners'])->name('reference.partners.update');
-        Route::delete('/product/destroy/{slug}', [AdminProductController::class, 'productdestroy'])->name('product.destroy');
+        Route::post('/product', [AdminProductController::class, 'productstore'])->name('prod.store');
+
+        Route::delete('/product/destroy/{slug}', [AdminProductController::class, 'prddestroy'])->name('product.destroy');
         // Route to display the edit form for a specific gallery item
         Route::get('/detailgallery/{slug}', [AdminReferencesController::class, 'edit'])->name('gallery.edit');
 
