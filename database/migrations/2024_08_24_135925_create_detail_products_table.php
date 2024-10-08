@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('video');
             $table->string('image1');
             $table->string('image2');            
+            $table->string('image3');
+            $table->string('image4');            
             $table->timestamps();
         });
     }

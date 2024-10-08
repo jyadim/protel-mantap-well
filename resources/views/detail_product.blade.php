@@ -78,11 +78,14 @@
                 <!-- First Section: 1 Picture and 4 Description Points -->
                 <div class="flex flex-col mt-8 lg:mt-12">
                     <!-- Picture -->
-                    <div class="mb-6 lg:w-1/2 mx-auto"> <!-- Centered and Increased width -->
-                        <img class="w-full h-auto object-cover rounded-lg shadow-md"
+                    <div class="mb-6 lg:w-1/2 flex gap-4 justify-start"> <!-- Flexbox digunakan untuk menempatkan gambar tidak center dan sejajar -->
+                        <img class="w-1/2 h-auto object-cover rounded-lg shadow-md"
                             src="{{ asset('storage/image/product/' . $detailProducts->image1) }}" alt="Product Image">
+                        <img class="w-1/2 h-auto object-cover rounded-lg shadow-md"
+                            src="{{ asset('storage/image/product/' . $detailProducts->image2) }}" alt="Product Image">
                     </div>
-
+                    
+                    
                     <!-- Descriptions -->
                     <div class="flex flex-col sm:flex-row flex-wrap lg:ml-4">
                         @foreach ($detailProducts->descriptionPoints->take(4) as $det)
@@ -100,13 +103,15 @@
                 <!-- Second Section: 1 Picture and Remaining Description Points -->
                 <div class="flex flex-col mt-16 lg:mt-20">
                     <!-- Picture -->
-                    <div class="mb-6 lg:w-1/2 mx-auto"> <!-- Centered and Increased width -->
+                    <div class="mb-6 lg:w-1/2 flex gap-4 justify-start"> <!-- Centered and Increased width -->
                         <img class="w-full h-auto object-cover rounded-lg shadow-md"
-                            src="{{ asset('storage/image/product/' . $detailProducts->image2) }}" alt="Product Image">
+                            src="{{ asset('storage/image/product/' . $detailProducts->image3) }}" alt="Product Image">
+                        <img class="w-full h-auto object-cover rounded-lg shadow-md"
+                            src="{{ asset('storage/image/product/' . $detailProducts->image4) }}" alt="Product Image">
                     </div>
 
                     <!-- Descriptions -->
-                    <div class="flex flex-col sm:flex-row flex-wrap lg:mr-4">
+                    <div class="flex flex-col sm:flex-row flex-wrap lg:ml-4">
                         @foreach ($detailProducts->descriptionPoints->skip(4) as $det)
                             <div class="w-full sm:w-1/2 mb-4 px-2 lg:px-4">
                                 <div class="h-full py-3 px-4 border border-green-500 rounded-lg shadow-sm">

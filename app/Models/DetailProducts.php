@@ -9,7 +9,7 @@ class DetailProducts extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'slug', 'video', 'image1', 'image2'];
+    protected $fillable = ['title', 'slug', 'video', 'image1', 'image2', 'image3', 'image4'];
 
     // Update the relationship method to match the foreign key "products_id"
     public function descriptionPoints()

@@ -39,21 +39,26 @@
                         <img alt="feature" class="object-cover object-center h-full w-full" src="{{ asset('storage/image/references/'.$reference['image']) }}">
                     </div>
                     <div class="lg:flex-grow md:w-1/2 lg:pl-20 flex flex-col md:items-start md:text-left items-center text-justify">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+                        <h1 class="title-font sm:text-5xl md:text-4xl text-3xl mb-8 font-medium text-gray-900">{{ $reference['title'] }}</h1>
+                        
+                        <div class="flex flex-wrap justify-between">
                             @foreach ($reference['partners'] as $partner)
-                                <div class="flex flex-col items-center md:items-start">
-                                    <div class="w-12 h-12 md:w-14 md:h-14 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 md:mb-5">
+                                <div class="flex flex-row items-center w-full md:w-5/12 mb-4">
+                                    <!-- Logo -->
+                                    <div class="w-12 h-12 md:w-14 md:h-14 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mr-4 flex-shrink-0">
                                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
                                             <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                                         </svg>
                                     </div>
-                                    <div class="text-center md:text-left">
-                                        <h2 class="text-gray-900 text-lg md:text-xl title-font font-medium mb-2 md:mb-3">{{ $partner['title'] }}</h2>
+                                    <!-- Title and Link -->
+                                    <div class="text-left w-full">
+                                        <h2 class="text-gray-900 text-lg md:text-xl title-font font-medium mb-1">{{ $partner['title'] }}</h2>
                                         <a href="{{ $partner['link'] }}" class="text-blue-500 hover:underline text-base md:text-lg" target="_blank">{{ $partner['text'] }}</a>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
+                        
                         <div class="mt-8 flex justify-center md:justify-start">
                             <a href="/gallery/{{ $reference['slug'] }}" class="inline-flex text-white bg-lime-600 border-0 py-3 px-6 focus:outline-none hover:bg-lime-700 rounded text-lg">See more</a>
                         </div>
