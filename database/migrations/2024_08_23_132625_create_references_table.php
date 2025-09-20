@@ -23,6 +23,8 @@ class CreateReferencesTable extends Migration
             $table->string('text');
             $table->string('link');
             $table->timestamps();
+
+
         });
     }
 

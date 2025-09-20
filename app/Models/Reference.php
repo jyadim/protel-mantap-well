@@ -12,6 +12,11 @@ class Reference extends Model
 
     public function partners()
     {
-        return $this->hasMany(Partner::class);
+        return $this->hasMany(Partner::class, 'reference_id'); // Adjust as needed
+    }
+    
+    public function pdf_ref()
+    {
+        return $this->hasMany(pdf_ref::class);
     }
 }

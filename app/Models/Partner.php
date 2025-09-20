@@ -9,10 +9,19 @@ class Partner extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['reference_id', 'title', 'text', 'link'];
+    protected $table = 'partners';
+    
+    protected $fillable = ['reference_id', 'partner_id', 'title', 'text', 'link'];
 
+    // Define the belongsTo relationship with Partners
+    public function partner()
+    {
+        return $this->belongsTo(Partners::class, 'partner_id');
+    }
+    
+    // Define the relationship with Reference if needed
     public function reference()
     {
-        return $this->belongsTo(Reference::class);
+        return $this->belongsTo(Reference::class, 'reference_id');
     }
 }

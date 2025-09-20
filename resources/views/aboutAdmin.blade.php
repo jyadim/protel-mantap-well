@@ -193,7 +193,88 @@
                                 <!-- resources/views/team/create.blade.php -->
 
                             </div>
+                            <h2 class="text-2xl font-bold mb-4">Manage PDFs</h2>
 
+                            @foreach ($about as $aboutItem)
+                                @if ($aboutItem->pdf_path)
+                                    <!-- Check if a PDF is already uploaded -->
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700">Current PDF:</label>
+                                        <a href="{{ asset('storage/pdfs/' . $aboutItem->pdf_path) }}"
+                                            class="text-blue-500 underline" target="_blank">{{ $aboutItem->pdf_title }}</a>
+                                        <small class="text-gray-500">You cannot upload another PDF.</small>
+                                    </div>
+                                @else
+                                    <!-- Form to Upload PDF if none exists -->
+                                    <form action="{{ route('about.pdf.store', $aboutItem->id) }}" method="POST"
+                                        enctype="multipart/form-data" class="mb-6">
+                                        @csrf
+                                        <div class="mb-4">
+                                            <label class="block text-gray-700">Upload PDF:</label>
+                                            <input type="file" name="pdf" accept="application/pdf"
+                                                class="w-full px-4 py-2 border rounded-lg" required>
+                                        </div>
+                                        <div class="mb-4">
+                                            <label class="block text-gray-700">PDF Title:</label>
+                                            <input type="text" name="title" class="w-full px-4 py-2 border rounded-lg"
+                                                placeholder="PDF Title" required>
+                                        </div>
+                                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Upload PDF</button>
+                                    </form>
+                                @endif
+                            @endforeach
+                            
+                            <!-- Form Edit PDF jika sedang mengedit PDF -->
+                            @if(isset($editingPDF)) 
+                                <form action="{{ route('about.pdf.update', [$about->id, $editingPDF->id]) }}" method="POST" enctype="multipart/form-data" class="mb-6">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700">Update PDF File:</label>
+                                        <input type="file" name="pdf" accept="application/pdf" class="w-full px-4 py-2 border rounded-lg">
+                                        <small class="text-gray-500">Current File: {{ $editingPDF->pdf_path }}</small>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700">PDF Title:</label>
+                                        <input type="text" name="title" class="w-full px-4 py-2 border rounded-lg" value="{{ $editingPDF->pdf_title }}" required>
+                                    </div>
+                                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Update PDF</button>
+                                </form>
+                            @endif
+                            
+                            <!-- Tabel PDF yang sudah di-upload -->
+                            <h3 class="text-xl font-semibold mb-4">Uploaded PDFs</h3>
+                            <table class="w-full table-auto bg-white shadow-lg rounded-lg">
+                                <thead>
+                                    <tr>
+                                        <th class="px-4 py-2">Title</th>
+                                        <th class="px-4 py-2">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($about as $pdf)
+                                    <tr>
+                                        <td class="border px-4 py-2">{{ $pdf->pdf_title }}</td>
+                                        <td class="border px-4 py-2">
+                                            <!-- Tombol untuk Edit PDF -->
+                            
+                                            <!-- Delete PDF -->
+                                            <form action="{{ route('about.pdf.delete', $pdf->id) }}" method="POST" class="inline-block">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            
+                            <!-- Form Edit PDF that will be filled with data when the edit button is clicked -->
+                            
+                            
+                            
+                            
 
 
                         </div>

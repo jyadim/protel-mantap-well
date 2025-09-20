@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\PDF;
 use App\Models\Products;
 use App\Models\Project;
 use App\Models\Reference;
@@ -17,7 +18,7 @@ class AdminAboutController extends Controller
 {
     public function index()
     {
-        $about = About::latest()->get();
+        $about = About::all();
         $team = Team::latest()->get();
         $product = Products::latest()->get();
         $ref = Project::latest()->get();
@@ -173,4 +174,79 @@ class AdminAboutController extends Controller
         $team->delete();
         return redirect()->back()->with('success', 'Product deleted successfully.');
       }
+      
+/// Store PDF
+public function storePDF(Request $request, $id) {
+            $about = About::findOrFail($id);
+
+    $request->validate([
+        'pdf' => 'required|mimes:pdf',
+        'title' => 'required|string|max:255',
+    ]);
+
+    // Save file and get original file name
+    $file = $request->file('pdf');
+    $fileName = $file->getClientOriginalName(); // Original file name
+    $path = $file->storeAs('pdfs', $fileName, 'public'); // Save file with original name and get path
+
+    // Update the About instance with the new PDF details
+    $about->pdf_title = $request->title; 
+    $about->pdf_path = $fileName; // Save the file path in the About table
+    $about->save(); // Save the About model
+
+    return redirect()->back()->with('success', 'PDF uploaded successfully');
+}
+// Update PDF
+public function updatePDF(Request $request, $id) {
+            $about = About::findOrFail($id);
+
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'pdf' => 'nullable|mimes:pdf',
+    ]);
+
+    // Update PDF file if a new file is provided
+    if ($request->hasFile('pdf')) {
+        // Validate the new file
+        $request->validate([
+            'pdf' => 'mimes:pdf',
+        ]);
+
+        // Delete the old file from storage if it exists
+        if ($about->pdf_path) {
+            Storage::disk('public')->delete('pdfs/' . $about->pdf_path);
+        }
+
+        // Save the new file
+        $file = $request->file('pdf');
+        $fileName = $file->getClientOriginalName(); // Original file name
+        $path = $file->storeAs('pdfs', $fileName, 'public'); // Save file and get path
+
+        // Update path and name in the About model
+        $about->pdf_path = $fileName; // Update the file path
+    }
+
+    // Update the title of the PDF
+    $about->pdf_title = $request->title; // Update the title
+    $about->save(); // Save the About model
+
+    return redirect()->back()->with('success', 'PDF updated successfully');
+}
+// Delete PDF
+public function destroyPDF($id) {
+            $about = About::findOrFail($id);
+
+    // Delete the file from storage if it exists
+    if ($about->pdf_path) {
+        Storage::disk('public')->delete('pdfs/' . $about->pdf_path);
+    }
+
+    // Clear the PDF path and title in the About model
+    $about->pdf_path = null;
+    $about->pdf_title = null;
+    $about->save(); // Save the About model
+
+    return redirect()->back()->with('success', 'PDF deleted successfully');
+}
+
 }

@@ -12,13 +12,14 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DetailGalleryController;
 use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\AdminAboutController;
 use App\Http\Controllers\AdminServiceController;
 use App\Http\Controllers\AdminContactController;
 use App\Http\Controllers\AdminDetailProductController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminReferencesController;
-use App\Models\HomeProduct;
+
 
 
 Route::prefix('/')->group(function () {
@@ -32,18 +33,20 @@ Route::prefix('/')->group(function () {
     Route::get('product/{slug}', [DetailProductController::class, 'index']);
     Route::get('gallery/{slug}', [DetailGalleryController::class, 'index']);
     Route::get('product/pdf-download/{slug}', [DetailProductController::class, 'pdfdownload'])->name('pdf.download');
-
+    Route::get('about/pdf-download/{id}', [AboutController::class, 'pdfdownload'])->name('about.pdf.download');
+    Route::get('ref/pdf-download/{id}', [ReferenceController::class, 'pdfdownload'])->name('ref.pdf.download');
 });
 
 // Group routes under the 'admin' prefix
 
-Route::prefix('admin')->group(function () {
-    Route::group(['middleware' => 'guest'], function () {
+
         Route::get('login', [LoginController::class, 'index'])->name('admin.login');
         Route::post('authenticate', [LoginController::class, 'authenticate'])->name('admin.authenticate');
-        Route::get('register', [LoginController::class, 'register'])->name('admin.register');
-        Route::post('process-register', [LoginController::class, 'processRegister'])->name('admin.processRegister');
-    });
+        Route::get('forgot-password', [PasswordResetController::class, 'showLinkRequestForm'])->name('password.request');
+        Route::post('forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])->name('password.email');
+        Route::get('reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+        Route::post('reset-password', [PasswordResetController::class, 'reset'])->name('password.update');
+
     Route::group(['middleware' => 'auth'], function () {
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
         Route::match(['GET', 'PUT'], 'dashboard', [AdminHomeController::class, 'index'])->name('admin.dashboard');
@@ -53,7 +56,7 @@ Route::prefix('admin')->group(function () {
         Route::match(['GET', 'PUT'], 'product', [AdminProductController::class, 'index'])->name('product.index');
         Route::match(['GET', 'PUT'], 'references', [AdminReferencesController::class, 'index'])->name('references.index');
 
-        Route::get('producthome/create', [AdminHomeController::class, 'prdcreate'])->name('homeproduct.create');
+        Route::post('producthome/create', [AdminHomeController::class, 'prdcreate'])->name('homeproduct.create');
         Route::get('producthome/{slug}', [AdminHomeController::class, 'show'])->name('homeproduct.show');
         Route::put('producthome/{slug}', [AdminHomeController::class, 'prdupdate'])->name('homeproduct.update');
         Route::delete('producthome/{slug}', [AdminHomeController::class, 'prddestroy'])->name('homeproduct.destroy');
@@ -63,6 +66,12 @@ Route::prefix('admin')->group(function () {
         Route::put('news/{slug}', [AdminHomecontroller::class, 'newsupdate'])->name('news.update');
         Route::delete('news/{slug}', [AdminHomecontroller::class, 'newsdestroy'])->name('news.destroy');
         Route::put('/about/edit/{id}', [AdminAboutController::class, 'edit'])->name('about.edit');
+        Route::post('/ref/{id}/pdf', [AdminReferencesController::class, 'storePDF'])->name('ref.pdf.store');
+        Route::delete('/ref/{id}/pdf', [AdminReferencesController::class, 'destroyPDF'])->name('ref.pdf.delete');
+        Route::post('/about/{id}/pdf', [AdminAboutController::class, 'storePDF'])->name('about.pdf.store');
+        Route::put('/about/{id}/pdf', [AdminAboutController::class, 'updatePDF'])->name('about.pdf.update');
+        Route::delete('/about/{id}/pdf', [AdminAboutController::class, 'destroyPDF'])->name('about.pdf.delete');
+
         Route::delete('/team/destroy{id}', [AdminAboutController::class, 'teamdestroy'])->name('team.destroy');
         Route::post('/team/store', [AdminAboutController::class, 'teamstore'])->name('team.store');
         Route::put('/team/update/{id}', [AdminAboutController::class, 'teamupdate'])->name('team.update');
@@ -91,6 +100,9 @@ Route::prefix('admin')->group(function () {
         Route::delete('/productgallery/destroy/{id}', [AdminDetailProductController::class, 'destroy'])->name('productgallery.destroy');
         Route::put('/reference/{id}', [AdminReferencesController::class, 'update'])->name('reference.update');
         Route::put('/reference/{id}/partners', [AdminReferencesController::class, 'updatePartners'])->name('reference.partners.update');
+        Route::put('/reference/{id}/partners/image', [AdminReferencesController::class, 'updateImagePartners'])->name('reference.partners.image.update');
+        Route::post('/partners/store/{referenceId}', [AdminReferencesController::class, 'store'])->name('partners.store');
+        Route::delete('/partners/delete/{id}', [AdminReferencesController::class, 'destroy'])->name('partners.delete');
         Route::post('/product', [AdminProductController::class, 'productstore'])->name('prod.store');
 
         Route::delete('/product/destroy/{slug}', [AdminProductController::class, 'prddestroy'])->name('product.destroy');
@@ -111,4 +123,3 @@ Route::prefix('admin')->group(function () {
         // To show the update form
 
     });
-});

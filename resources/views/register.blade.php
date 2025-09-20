@@ -102,7 +102,7 @@
 
                     <div class="m-auto mt-6 w-fit md:mt-8">
                         <span class="m-auto dark:text-gray-400">Have an account?
-                            <a class="font-semibold text-indigo-600 dark:text-indigo-100" href="/account/login">Sign In</a>
+                            <a class="font-semibold text-indigo-600 dark:text-indigo-100" href="/admin/login">Sign In</a>
                         </span>
                     </div>
                 </div>

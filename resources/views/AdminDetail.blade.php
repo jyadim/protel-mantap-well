@@ -114,7 +114,7 @@
                                             id="card-preview-{{ $detailProduct->slug }}-1" />
                                     </label>
                                 </div>
-
+                            
                                 <!-- Image 2 Upload Section -->
                                 <div class="form-group flex-1">
                                     <input type="file" name="image2" class="hidden"
@@ -128,6 +128,9 @@
                                     </label>
                                 </div>
                             </div>
+                            
+                            
+                            
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                                 @php
@@ -138,7 +141,7 @@
                                 @endphp
                             
                                 @if ($descriptionPoints)
-                                    @foreach ($descriptionPoints as $index => $det)
+                                    @foreach ($descriptionPoints->take(4) as $index => $det)
                                         <div class="form-group p-4 border border-gray-300 rounded-lg shadow-sm">
                                             <label for="description{{ $index }}"
                                                 class="block text-lg font-semibold text-gray-800 mb-2">
@@ -152,11 +155,57 @@
                                                 placeholder="Enter description here">{{ $det->desc }}</textarea>
                                         </div>
                                     @endforeach
+                            </div>
+                            <div class="flex space-x-4 mt-8"> <!-- Add margin top for spacing -->
+                                <!-- Image 3 Upload Section -->
+                                <div class="form-group flex-1">
+                                    <input type="file" name="image3" class="hidden"
+                                        id="image-upload-{{ $detailProduct->slug }}-3"
+                                        onchange="previewImage(event, 'card-preview-{{ $detailProduct->slug }}-3')"
+                                        accept=".png, .jpg, .jpeg" />
+                                    <label for="image-upload-{{ $detailProduct->slug }}-3">
+                                        <img src="{{ $detailProduct->image3 ? asset('storage/image/product/' . $detailProduct->image3) : 'data:image/svg+xml;base64,' . base64_encode('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="100%" height="100%" fill="#e0e0e0"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#b0b0b0" font-size="20">No Image</text></svg>') }}"
+                                            alt="Product" class="h-80 w-full object-cover rounded-t-xl cursor-pointer"
+                                            id="card-preview-{{ $detailProduct->slug }}-3" />
+                                    </label>
+                                </div>
+                            
+                                <!-- Image 4 Upload Section -->
+                                <div class="form-group flex-1">
+                                    <input type="file" name="image4" class="hidden"
+                                        id="image-upload-{{ $detailProduct->slug }}-4"
+                                        onchange="previewImage(event, 'card-preview-{{ $detailProduct->slug }}-4')"
+                                        accept=".png, .jpg, .jpeg" />
+                                    <label for="image-upload-{{ $detailProduct->slug }}-4">
+                                        <img src="{{ $detailProduct->image4 ? asset('storage/image/product/' . $detailProduct->image4) : 'data:image/svg+xml;base64,' . base64_encode('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="100%" height="100%" fill="#e0e0e0"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#b0b0b0" font-size="20">No Image</text></svg>') }}"
+                                            alt="Product" class="h-80 w-full object-cover rounded-t-xl cursor-pointer"
+                                            id="card-preview-{{ $detailProduct->slug }}-4" />
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+
+                                @foreach ($descriptionPoints->skip(4) as $index => $det)
+                                    <div class="form-group p-4 border border-gray-300 rounded-lg shadow-sm">
+                                        <label for="description{{ $index }}"
+                                            class="block text-lg font-semibold text-gray-800 mb-2">
+                                            Description {{ $index + 1 }}
+                                        </label>
+                                        <textarea id="title{{ $index }}" name="titledesc[]" rows="1"
+                                            class="form-input w-full text-lg font-bold p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            placeholder="Enter description here">{{ $det->title }}</textarea>
+                                        <textarea id="description{{ $index }}" name="descriptions[]" rows="6"
+                                            class="form-input w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            placeholder="Enter description here">{{ $det->desc }}</textarea>
+                                    </div>
+                                @endforeach
+                            </div>
+
                                 @else
                                     <!-- You can add your create logic here if no description points exist -->
                                     <p class="text-gray-500">No description points available. Please create one.</p>
                                 @endif
-                            </div>
+                            
                             
                             
                             </div>

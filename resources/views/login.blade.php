@@ -74,11 +74,11 @@
                     </form>
 
                     <div class="m-auto mt-6 w-fit md:mt-8">
-                        <span class="m-auto dark:text-gray-400">Don't have an account?
+                        <span class="m-auto dark:text-gray-400">Forgot Password?
                             <a class="font-semibold text-indigo-600 dark:text-indigo-100"
-                                href="{{route('admin.register')}}">Create
-                                Account</a>
+                                href="{{route('password.request')}}">Login via Email</a>
                         </span>
+                        
                     </div>
                 </div>
             </div>

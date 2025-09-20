@@ -147,6 +147,8 @@ public function detailupdate(Request $request, $slug)
             'titledesc.*' => 'nullable|string',
             'image1' => 'nullable|image|mimes:jpg,jpeg,png',
             'image2' => 'nullable|image|mimes:jpg,jpeg,png',
+            'image3' => 'nullable|image|mimes:jpg,jpeg,png',
+            'image4' => 'nullable|image|mimes:jpg,jpeg,png',
             'video_upload' => 'nullable|file|mimes:mp4,mov,ogg,qt0',
         ]);
         Log::info('Validation successful', ['validated' => $validated]);
@@ -188,6 +190,42 @@ public function detailupdate(Request $request, $slug)
                 $detailProduct->image2 = $fileName;
             } else {
                 Log::error('Invalid image2 upload.');
+            }
+        }
+        if ($request->hasFile('image3')) {
+            $file = $request->file('image3');
+            if ($file->isValid()) {
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $filePath = 'image/product/' . $fileName;
+                Storage::disk('public')->put($filePath, file_get_contents($file));
+                Log::info('image3 uploaded', ['file_name' => $fileName, 'file_path' => $filePath]);
+
+                // Delete the old image if it exists
+                if ($detailProduct->image3 && Storage::disk('public')->exists('image/product/' . $detailProduct->image3)) {
+                    Storage::disk('public')->delete('image/product/' . $detailProduct->image3);
+                    Log::info('Old image3 deleted', ['old_image' => $detailProduct->image3]);
+                }
+                $detailProduct->image3 = $fileName;
+            } else {
+                Log::error('Invalid image3 upload.');
+            }
+        }
+        if ($request->hasFile('image4')) {
+            $file = $request->file('image4');
+            if ($file->isValid()) {
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $filePath = 'image/product/' . $fileName;
+                Storage::disk('public')->put($filePath, file_get_contents($file));
+                Log::info('image4 uploaded', ['file_name' => $fileName, 'file_path' => $filePath]);
+
+                // Delete the old image if it exists
+                if ($detailProduct->image4 && Storage::disk('public')->exists('image/product/' . $detailProduct->image4)) {
+                    Storage::disk('public')->delete('image/product/' . $detailProduct->image4);
+                    Log::info('Old image4 deleted', ['old_image' => $detailProduct->image4]);
+                }
+                $detailProduct->image4 = $fileName;
+            } else {
+                Log::error('Invalid image4 upload.');
             }
         }
 

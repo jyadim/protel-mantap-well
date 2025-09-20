@@ -130,7 +130,48 @@
                             </form>
                         </div>
             </div>
-            @endforeach
+                    @endforeach
+                    <div class="w-72 bg-white shadow-md rounded-xl hover:shadow-xl items-center">
+                        <form action="{{ route('homeproduct.create') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="image_path" class="hidden" id="image-upload-new" 
+                                   onchange="previewCardPhoto(event, 'card-preview-new')" accept=".png, .jpg, .jpeg" />
+                            <label for="image-upload-new">
+                                <img src="{{ asset('storage/image/default-placeholder.png') }}" alt="Product"
+                                     class="h-80 w-72 object-cover rounded-t-xl cursor-pointer" id="card-preview-new" />
+                            </label>
+                            <div class="px-4 py-3 w-72">
+                                <select name="author_name"
+                                class="text-gray-400 mr-3 uppercase text-xs w-full border border-gray-300 rounded px-2 py-1 mb-2">
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                                <select name="name"
+                                        class="text-gray-400 mr-3 uppercase text-xs w-full border border-gray-300 rounded px-2 py-1 mb-2">
+                                    <option value="" disabled selected>Select a product</option>
+                                    @foreach ($availableProducts as $product)
+                                        <option value="{{ $product->title }}">{{ $product->title }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="flex justify-between items-center">
+                                    <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded">Add Product</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <script>
+                        function previewCardPhoto(event, previewId) {
+                            const reader = new FileReader();
+                            reader.onload = function(){
+                                const output = document.getElementById(previewId);
+                                output.src = reader.result;
+                            };
+                            reader.readAsDataURL(event.target.files[0]);
+                        }
+                    </script>
+                    
 
 
           
