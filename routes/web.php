@@ -39,13 +39,16 @@ Route::prefix('/')->group(function () {
 
 // Group routes under the 'admin' prefix
 
-
-        Route::get('login', [LoginController::class, 'index'])->name('admin.login');
-        Route::post('authenticate', [LoginController::class, 'authenticate'])->name('admin.authenticate');
-        Route::get('forgot-password', [PasswordResetController::class, 'showLinkRequestForm'])->name('password.request');
-        Route::post('forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])->name('password.email');
-        Route::get('reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
-        Route::post('reset-password', [PasswordResetController::class, 'reset'])->name('password.update');
+Route::prefix('/admin')->group(function () {
+    Route::get('/', function () {
+        return redirect()->route('admin.login');
+    });
+    Route::get('login', [LoginController::class, 'index'])->name('admin.login');
+    Route::post('authenticate', [LoginController::class, 'authenticate'])->name('admin.authenticate');
+    Route::get('forgot-password', [PasswordResetController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+    Route::post('reset-password', [PasswordResetController::class, 'reset'])->name('password.update');
 
     Route::group(['middleware' => 'auth'], function () {
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
@@ -123,3 +126,4 @@ Route::prefix('/')->group(function () {
         // To show the update form
 
     });
+});
